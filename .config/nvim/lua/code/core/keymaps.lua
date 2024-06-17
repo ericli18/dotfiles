@@ -9,6 +9,15 @@ map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = tru
 -- Clear search with <esc>
 map({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 
+-- Clear search, diff update and redraw
+-- taken from runtime/lua/_editor.lua
+map(
+  "n",
+  "<leader>ur",
+  "<Cmd>nohlsearch<Bar>diffupdate<Bar>normal! <C-L><CR>",
+  { desc = "Redraw / Clear hlsearch / Diff Update" }
+)
+
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
 map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
@@ -40,3 +49,4 @@ map("n", "<leader>e", [[<cmd>call VSCodeNotify('workbench.view.explorer')<cr>]])
 map("n", "L", [[<cmd>call VSCodeNotify('workbench.action.nextEditorInGroup')<cr>]])
 map("n", "H", [[<cmd>call VSCodeNotify('workbench.action.previousEditorInGroup')<cr>]])
 map("n", "<leader>cs", [[<cmd>call VSCodeNotify('workbench.action.toggleAuxiliaryBar')<cr>]])
+
