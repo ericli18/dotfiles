@@ -23,4 +23,6 @@ abbr -a ... ../..
 
 # Keep this at the end
 #starship init fish | source
+source "$HOME/.cargo/env.fish"
 zoxide init fish | source
+set PATH "$HOME/.local/bin:$HOME/bin:$PATH"
