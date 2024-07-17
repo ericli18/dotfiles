@@ -8,6 +8,12 @@ if true then return {
   {
     "folke/flash.nvim",
     enabled = false
+  },
+    {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
   }
 } end
 
