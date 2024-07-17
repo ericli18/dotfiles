@@ -64,7 +64,8 @@ window#waybar.hidden {
 #mode,
 #custom-media #custom-power,
 #idle_inhibitor,
-#tray {
+#tray,
+#mpris {
   padding: 0 13px;
   margin: 0 0px;
   color: #ffffff;
@@ -88,6 +89,15 @@ window#waybar.hidden {
 }
 
 #custom-media {
+  color: #000000;
+  background-color: #ebdbb2;
+  padding-right: 13px;
+  border-radius: 0px 5px 5px 0px;
+  padding-left: 3px;
+  margin-left: -3px;
+}
+
+#mpris {
   color: #000000;
   background-color: #ebdbb2;
   padding-right: 13px;

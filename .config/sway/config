@@ -4,7 +4,7 @@
 #
 # Read `man 5 sway` for a complete reference.
 exec_always autotiling -w 1 2 3
-exec_always wlsunset -l 33.02 -L -96.70h
+exec_always wlsunset -l 33.02 -L -96.70 -t 3000 -T 6500
 
 ### Variables
 #
@@ -17,7 +17,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 # Recommends: foot
-set $term foot
+set $term wezterm
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -77,9 +77,9 @@ set $keyboard "1:1:AT_Translated_Set_2_keyboard"
        scroll_factor 0.6
        }
 
-input $keyboard {
-	xkb_options ctrl:nocaps
-	}
+input type:keyboard {
+    xkb_options ctrl:nocaps,altwin:swap_alt_win
+}
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
