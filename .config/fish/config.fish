@@ -20,6 +20,19 @@ abbr -a lg lazygit
 abbr -a nv nvim
 abbr -a ... ../..
 
+#LSD Functions
+function la
+    lsd -A
+end
+
+function ll
+    lsd -al --group-dirs first
+end
+
+function ls
+    lsd
+end
+
 
 # Keep this at the end
 #starship init fish | source
