@@ -5,8 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source /home/eric/.antidote/antidote.zsh
-source ~/.zaliases
+source /home/ericli/.antidote/antidote.zsh
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
 

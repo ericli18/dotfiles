@@ -21,6 +21,7 @@ abbr -a nv nvim
 abbr -a ... ../..
 
 #LSD Functions
+abbr -a ls lsd
 function la
     lsd -A
 end
@@ -29,9 +30,6 @@ function ll
     lsd -al --group-dirs first
 end
 
-function ls
-    lsd
-end
 
 
 # Keep this at the end
@@ -39,3 +37,6 @@ end
 source "$HOME/.cargo/env.fish"
 zoxide init fish | source
 set PATH "$HOME/.local/bin:$HOME/bin:$PATH"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
