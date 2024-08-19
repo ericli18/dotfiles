@@ -66,6 +66,11 @@ config.keys = {
 	{ key = "]", mods = "LEADER", action = act.ActivateTabRelative(1) },
 	{ key = "n", mods = "LEADER", action = act.ShowTabNavigator },
 	{
+		key = "w",
+		mods = "LEADER",
+		action = act.CloseCurrentTab({ confirm = true }),
+	},
+	{
 		key = "e",
 		mods = "LEADER",
 		action = act.PromptInputLine({
@@ -88,7 +93,7 @@ config.keys = {
 	{ key = "}", mods = "LEADER|SHIFT", action = act.MoveTabRelative(1) },
 
 	-- Lastly, workspace
-	{ key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	-- { key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
 }
 -- I can use the tab navigator (LDR t), but I also want to quickly navigate tabs with index
 for i = 1, 9 do
