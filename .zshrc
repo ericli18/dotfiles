@@ -13,7 +13,6 @@ export ELECTRON_OZONE_PLATFORM_HINT=wayland
 antidote load
 autoload -U compinit; compinit
 zstyle ':completion:*' menu select
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 bindkey -r '^S'
 bindkey -r '^R'
@@ -45,3 +44,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+. "$HOME/.cargo/env"
