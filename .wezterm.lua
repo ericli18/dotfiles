@@ -14,7 +14,8 @@ config.font_size = 16
 config.window_background_opacity = 1
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
-config.window_decorations = "INTEGRATED_BUTTONS|NONE"
+-- config.window_decorations = "INTEGRATED_BUTTONS|NONE"
+config.window_decorations = "NONE"
 config.default_workspace = "main"
 
 wezterm.on("gui-startup", function()

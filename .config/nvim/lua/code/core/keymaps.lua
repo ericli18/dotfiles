@@ -43,10 +43,10 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 -- vscode specific keymaps
 -- local vscode = require('vscode')
 map("n", "<leader>ff", "<cmd>Find<cr>")
+map("n", "<leader><leader>", "<cmd>Find<cr>")
 map("n", "<leader>/", [[<cmd>call VSCodeNotify('workbench.action.findInFiles')<cr>]])
 map("n", "<leader>ss", [[<cmd>call VSCodeNotify('workbench.action.gotoSymbol')<cr>]])
 map("n", "<leader>e", [[<cmd>call VSCodeNotify('workbench.view.explorer')<cr>]])
 map("n", "L", [[<cmd>call VSCodeNotify('workbench.action.nextEditorInGroup')<cr>]])
 map("n", "H", [[<cmd>call VSCodeNotify('workbench.action.previousEditorInGroup')<cr>]])
 map("n", "<leader>cs", [[<cmd>call VSCodeNotify('workbench.action.toggleAuxiliaryBar')<cr>]])
-
