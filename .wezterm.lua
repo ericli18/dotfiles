@@ -10,7 +10,7 @@ end
 -- Spawn a fish shell in login mode
 config.default_prog = { "/usr/bin/fish", "-l" }
 config.color_scheme = "Tokyo Night"
-config.font_size = 16
+config.font_size = 14
 config.window_background_opacity = 1
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
