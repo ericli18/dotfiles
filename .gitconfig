@@ -1,0 +1,9 @@
+[user]
+	name = Eric Li
+	email = eric.li.8736@gmail.com
+[init]
+	defaultBranch = main
+[color]
+	ui = auto
+[pull]
+	rebase = false

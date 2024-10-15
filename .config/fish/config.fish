@@ -23,13 +23,13 @@ abbr -a ... ../..
 abbr -a de distrobox enter
 
 #LSD Functions
-abbr -a ls lsd
+abbr -a ls eza
 function la
-    lsd -A
+    eza -A
 end
 
 function ll
-    lsd -al --group-dirs first
+    eza -al
 end
 
 function y

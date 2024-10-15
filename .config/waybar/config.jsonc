@@ -2,7 +2,7 @@
   "layer": "top",
   "height": 25,
   "modules-left": ["tray", "custom/media"],
-  "modules-center": ["sway/workspaces", "sway/mode"],
+  "modules-center": ["hyprland/workspaces"],
   "modules-right": [
     "idle_inhibitor",
     "pulseaudio",
@@ -10,34 +10,40 @@
     "battery",
     "clock",
   ],
-  "sway/workspaces": {
+  "hyprland/workspaces": {
     "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "urgent": "",
+      "focused": "",
+      "default": "",
+    },
   },
   "custom/media": {
     "format": "<span color='#b8bb26'>{icon}</span> {}",
     "return-type": "json",
     "max-length": 40,
     "format-icons": {
-      "spotify": "",
+      "spotify": "",
       "default": "🎜",
     },
     "escape": true,
-    "exec": "$HOME/.config/waybar/mediaplayer.py", // Filte>
+    "exec": "$HOME/.config/waybar/mediaplayer.py",
     "on-click": "playerctl -p spotify play-pause",
     "on-click-right-release": "playerctl -p spotify next",
     "tooltip": false,
-  },
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>",
-  },
-  "sway/window": {
-    "max-length": 50,
   },
   "mpris": {
     "format": "{player_icon} {dynamic}",
     "format-paused": "{status_icon} <i>{dynamic}</i>",
     "player-icons": {
-      "spotify": "",
+      "spotify": "",
       "default": "🎵",
     },
     "dynamic-order": ["title", "artist"],
@@ -67,10 +73,10 @@
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
-      "activated": "",
-      "deactivated": "",
+      "activated": "",
+      "deactivated": "",
     },
-    "tooltip": "true",
+    "tooltip": true,
   },
   "tray": {
     "icon-size": 18,
@@ -78,66 +84,17 @@
   },
   "backlight": {
     "format": "{percent}% {icon}",
-    "format-icons": ["", ""],
+    "format-icons": ["", ""],
   },
-  // "battery": {
-  //   "bat": "BAT0",
-  //   "interval": 10,
-  //   "states": {
-  //     "warning": 30,
-  //     "critical": 15,
-  //     "5": 100,
-  //     "4": 75,
-  //     "3": 50,
-  //     "2": 30,
-  //     "1": 15,
-  //   },
-  //   "format-time": "{H}:{M:02}",
-  //   "format": "{capacity}% {icon}",
-  //   "format-charging-5": "{capacity}%   󰚥",
-  //   "format-charging-4": "{capacity}%   󰚥",
-  //   "format-charging-3": "{capacity}%   󰚥",
-  //   "format-charging-2": "{capacity}%   󰚥",
-  //   "format-charging-1": "{capacity}%   󰚥",
-  //   "format-charging-full": "{capacity}%",
-  //   "format-charging": "{capacity}% 󰚥",
-  //   "format-alt": "{time} {icon}",
-  //   "format-full": "100% ",
-  //   "format-icons": {
-  //     "1": "",
-  //     "2": "",
-  //     "3": "",
-  //     "4": "",
-  //     "5": "",
-  //   },
-  // },
   "network": {
     "format": "{ifname}",
-    "format-ethernet": "{ifname} ",
-    "format-wifi": "",
-    "format-linked": "{ifname} (No IP) ",
+    "format-ethernet": "{ifname} ",
+    "format-wifi": "",
+    "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
     "format-alt": "{essid}: {ipaddr}/{cidr}",
     "tooltip-format": "{ifname}: {ipaddr}/{cidr}",
   },
-  // "pulseaudio": {
-  // 	"format": "{icon} {volume}%",
-  // 	"format-bluetooth": "{icon} {volume}%",
-  // 	"format-muted": "",
-  // 	"format-icons": {
-  // 		"headphone": "",
-  // 		"hands-free": "",
-  // 		"headset": "",
-  // 		"phone": "",
-  // 		"portable": "",
-  // 		"car": "",
-  //         "default": ["", "", ""]
-  // 	},
-  // 	"scroll-step": 1,
-  //     "reverse-scrolling": true,
-  // 	"on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-  // 	"tooltip": false
-  // },
   "pulseaudio": {
     "format": "{icon}{volume}%",
     "format-bluetooth": "󰂰 {volume}%",
@@ -145,7 +102,7 @@
     "tooltip-format": "Volume : {volume}%",
     "format-muted": "󰝟 ",
     "format-icons": {
-      "headphone": " ",
+      "headphone": " ",
       "default": ["󰕿 ", "󰖀 ", "󰕾 "],
     },
     "on-click": "pavucontrol",
@@ -167,7 +124,7 @@
   "custom/power": {
     "format": "󰐥 ",
     "interval": 86400,
-    "on-click": "~/.config/sway/scripts/wlogout.sh",
+    "on-click": "~/.config/hypr/scripts/wlogout.sh",
     "tooltip": true,
   },
 }
