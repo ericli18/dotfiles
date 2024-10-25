@@ -12,7 +12,7 @@ config.default_prog = { "/usr/bin/fish", "-l" }
 config.color_scheme = "Catppuccin Mocha"
 config.font_size = 14
 config.window_background_opacity = 1
-config.window_close_confirmation = "AlwaysPrompt"
+config.window_close_confirmation = "NeverPrompt"
 config.scrollback_lines = 3000
 config.default_workspace = "main"
 
