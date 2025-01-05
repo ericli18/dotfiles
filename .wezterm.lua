@@ -9,7 +9,7 @@ end
 
 -- Spawn a fish shell in login mode
 config.default_prog = { "/usr/bin/fish", "-l" }
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Gruvbox dark, hard (base16)"
 config.font_size = 14
 config.window_background_opacity = 1
 config.window_close_confirmation = "NeverPrompt"
@@ -18,8 +18,8 @@ config.default_workspace = "main"
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
-	saturation = 0.8,
-	brightness = 0.8,
+	saturation = 0.6,
+	brightness = 0.6,
 }
 
 -- Keys
@@ -119,81 +119,81 @@ config.key_tables = {
 
 -- Tab bar
 -- I don't like the look of "fancy" tab bar
--- config.use_fancy_tab_bar = false
--- config.status_update_interval = 1000
--- config.tab_bar_at_bottom = false
--- wezterm.on("update-status", function(window, pane)
--- 	-- Workspace name
--- 	local stat = window:active_workspace()
--- 	local stat_color = "#f7768e"
--- 	-- It's a little silly to have workspace name all the time
--- 	-- Utilize this to display LDR or current key table name
--- 	if window:active_key_table() then
--- 		stat = window:active_key_table()
--- 		stat_color = "#7dcfff"
--- 	end
--- 	if window:leader_is_active() then
--- 		stat = "LDR"
--- 		stat_color = "#bb9af7"
--- 	end
---
--- 	local basename = function(s)
--- 		-- Nothing a little regex can't fix
--- 		return string.gsub(s, "(.*[/\\])(.*)", "%2")
--- 	end
---
--- 	-- Current working directory
--- 	local cwd = pane:get_current_working_dir()
--- 	if cwd then
--- 		if type(cwd) == "userdata" then
--- 			-- Wezterm introduced the URL object in 20240127-113634-bbcac864
--- 			cwd = basename(cwd.file_path)
--- 		else
--- 			-- 20230712-072601-f4abf8fd or earlier version
--- 			cwd = basename(cwd)
--- 		end
--- 	else
--- 		cwd = ""
--- 	end
---
--- 	-- Current command
--- 	local cmd = pane:get_foreground_process_name()
--- 	-- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l)
--- 	cmd = cmd and basename(cmd) or ""
---
--- 	-- Time
--- 	local time = wezterm.strftime("%H:%M")
---
--- 	-- Left status (left of the tab line)
--- 	window:set_left_status(wezterm.format({
--- 		{ Foreground = { Color = stat_color } },
--- 		{ Text = "  " },
--- 		{ Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
--- 		{ Text = " |" },
--- 	}))
--- end)
+config.use_fancy_tab_bar = false
+config.status_update_interval = 1000
+config.tab_bar_at_bottom = false
+wezterm.on("update-status", function(window, pane)
+	-- Workspace name
+	local stat = window:active_workspace()
+	local stat_color = "#f7768e"
+	-- It's a little silly to have workspace name all the time
+	-- Utilize this to display LDR or current key table name
+	if window:active_key_table() then
+		stat = window:active_key_table()
+		stat_color = "#7dcfff"
+	end
+	if window:leader_is_active() then
+		stat = "LDR"
+		stat_color = "#bb9af7"
+	end
 
--- config.window_frame = {
--- 	font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
---
--- 	-- The size of the font in the tab bar.
--- 	-- Default to 10.0 on Windows but 12.0 on other systems
--- 	font_size = 11.0,
---
--- 	-- The overall background color of the tab bar when
--- 	-- the window is focused
--- 	active_titlebar_bg = "#1a1b26",
---
--- 	-- The overall background color of the tab bar when
--- 	-- the window is not focused
--- 	inactive_titlebar_bg = "#1a1b26",
--- }
---
--- config.colors = {
--- 	tab_bar = {
--- 		-- The color of the inactive tab bar edge/divider
--- 		inactive_tab_edge = "#1a1b26",
--- 	},
--- }
+	local basename = function(s)
+		-- Nothing a little regex can't fix
+		return string.gsub(s, "(.*[/\\])(.*)", "%2")
+	end
+
+	-- Current working directory
+	local cwd = pane:get_current_working_dir()
+	if cwd then
+		if type(cwd) == "userdata" then
+			-- Wezterm introduced the URL object in 20240127-113634-bbcac864
+			cwd = basename(cwd.file_path)
+		else
+			-- 20230712-072601-f4abf8fd or earlier version
+			cwd = basename(cwd)
+		end
+	else
+		cwd = ""
+	end
+
+	-- Current command
+	local cmd = pane:get_foreground_process_name()
+	-- CWD and CMD could be nil (e.g. viewing log using Ctrl-Alt-l)
+	cmd = cmd and basename(cmd) or ""
+
+	-- Time
+	local time = wezterm.strftime("%H:%M")
+
+	-- Left status (left of the tab line)
+	window:set_left_status(wezterm.format({
+		{ Foreground = { Color = stat_color } },
+		{ Text = "  " },
+		{ Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
+		{ Text = " |" },
+	}))
+end)
+
+config.window_frame = {
+	font = wezterm.font({ family = "JetBrains Mono", weight = "Bold" }),
+
+	-- The size of the font in the tab bar.
+	-- Default to 10.0 on Windows but 12.0 on other systems
+	font_size = 12.0,
+
+	-- The overall background color of the tab bar when
+	-- the window is focused
+	active_titlebar_bg = "#1a1b26",
+
+	-- The overall background color of the tab bar when
+	-- the window is not focused
+	inactive_titlebar_bg = "#1a1b26",
+}
+
+config.colors = {
+	tab_bar = {
+		-- The color of the inactive tab bar edge/divider
+		inactive_tab_edge = "#1a1b26",
+	},
+}
 
 return config
