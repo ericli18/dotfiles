@@ -18,18 +18,37 @@ abbr -a gl git log --graph --oneline --decorate
 abbr -a c clear
 abbr -a lg lazygit
 abbr -a nv nvim
+function ff
+    cd (tv dirs)
+end
 abbr -a ... ../..
 
 abbr -a de distrobox enter
 
 #LSD Functions
-abbr -a ls eza
+abbr -a l 'eza --icons --group-directories-first'
 function la
     eza -A
 end
 
 function ll
     eza -al
+end
+
+function md
+    if test (count $argv) -ne 1
+        echo "Usage: mcd <directory>"
+        return 1
+    end
+
+    mkdir -p $argv[1]
+
+    if test $status -eq 0
+        cd $argv[1]
+    else
+        echo "Failed to create directory '$argv[1]'."
+        return $status
+    end
 end
 
 function y
@@ -66,3 +85,4 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 #     end
 # end
 # <<< conda initialize <<<
+# ~/.local/bin/mise activate fish | source
