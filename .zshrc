@@ -11,6 +11,11 @@ source /home/ericli/.antidote/antidote.zsh
 source /home/ericli/.zsh_aliases
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 
+ff() {
+    cd $(tv dirs)
+}
+
+
 
 # initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
 antidote load
@@ -34,3 +39,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 . "$HOME/.cargo/env"
 . "/home/ericli/.deno/env"
+
+[ -f "/home/ericli/.ghcup/env" ] && . "/home/ericli/.ghcup/env" # ghcup-env
+eval "$(zoxide init zsh)"
