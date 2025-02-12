@@ -19,8 +19,6 @@ map(
   { desc = "Redraw / Clear hlsearch / Diff Update" }
 )
 
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save File" })
-
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
