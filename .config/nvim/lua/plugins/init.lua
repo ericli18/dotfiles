@@ -24,19 +24,43 @@
 -- }
 return {
   {
+    "hiphish/rainbow-delimiters.nvim",
+    version = "*", -- Pin to GitHub releases
+    lazy = false,
+    -- enabled = false,
+    config = function()
+      require('rainbow-delimiters.setup').setup {
+        highlight = {
+          'RainbowDelimiterCyan',
+          'RainbowDelimiterYellow',
+          'RainbowDelimiterBlue',
+          'RainbowDelimiterOrange',
+          'RainbowDelimiterGreen',
+          'RainbowDelimiterViolet',
+          'RainbowDelimiterRed',
+        },
+      }
+    end,
+  },
+  {
     "amitds1997/remote-nvim.nvim",
-    version = "*",                      -- Pin to GitHub releases
+    version = "*",                     -- Pin to GitHub releases
     dependencies = {
-      "nvim-lua/plenary.nvim",          -- For standard functions
-      "MunifTanjim/nui.nvim",           -- To build the plugin UI
-      "nvim-telescope/telescope.nvim",  -- For picking b/w different remote methods
+      "nvim-lua/plenary.nvim",         -- For standard functions
+      "MunifTanjim/nui.nvim",          -- To build the plugin UI
+      "nvim-telescope/telescope.nvim", -- For picking b/w different remote methods
     },
     config = true,
   },
   {
     'xeluxee/competitest.nvim',
     dependencies = 'MunifTanjim/nui.nvim',
-    config = function() require('competitest').setup() end,
+    config = function()
+      require('competitest').setup {
+        -- testcases_directory = "./.tests",
+        testcases_use_single_file = true,
+      }
+    end,
     lazy = false
   },
   {
