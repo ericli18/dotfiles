@@ -34,4 +34,4 @@ map("n", "H", function()
   require("nvchad.tabufline").prev()
 end, { desc = "buffer goto prev" })
 
-map("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
+-- map("n", "<leader><space>", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })

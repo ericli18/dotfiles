@@ -1,28 +1,49 @@
--- return {
---   {
---     "stevearc/conform.nvim",
---     -- event = 'BufWritePre', -- uncomment for format on save
---     opts = require "configs.conform",
---   },
---
---   -- These are some examples, uncomment them if you want to see them work!
---   {
---     "neovim/nvim-lspconfig",
---     config = function()
---       require "configs.lspconfig"
---     end,
---   },
---   -- {
---   -- 	"nvim-treesitter/nvim-treesitter",
---   -- 	opts = {
---   -- 		ensure_installed = {
---   -- 			"vim", "lua", "vimdoc",
---   --      "html", "css"
---   -- 		},
---   -- 	},
---   -- },
--- }
 return {
+  -- lazy.nvim
+  {
+    'nvim-telescope/telescope.nvim',
+    enabled = false
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<Esc>"] = { "close", mode = { "n", "i" } },
+            }
+          }
+        }
+      },
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+    },
+    keys = {
+      -- Top Pickers & Explorer
+      { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+      { "<C-p>",           function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+      -- { "<leader>,",       function() Snacks.picker.buffers() end,                                 desc = "Buffers" },
+      { "<leader>fg",      function() Snacks.picker.grep() end,  desc = "Grep" },
+    },
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "VeryLazy",
+        callback = function()
+          -- Setup some globals for debugging (lazy-loaded)
+          _G.dd = function(...)
+            Snacks.debug.inspect(...)
+          end
+          _G.bt = function()
+            Snacks.debug.backtrace()
+          end
+          vim.print = _G.dd -- Override print to use snacks for `:=` command
+        end,
+      })
+    end,
+  },
   {
     "hiphish/rainbow-delimiters.nvim",
     version = "*", -- Pin to GitHub releases
