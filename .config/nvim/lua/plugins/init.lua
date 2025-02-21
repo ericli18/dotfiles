@@ -1,6 +1,40 @@
 return {
     -- lazy.nvim
-    --
+    {
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require("codecompanion").setup({
+                strategies = {
+                    chat = {
+                        adapter = "copilot",
+                    },
+                    inline = {
+                        adapter = "copilot",
+                    },
+                },
+            })
+        end
+    },
+    {
+        "linux-cultist/venv-selector.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+            { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
+        },
+        lazy = true,
+        branch = "regexp", -- This is the regexp branch, use this for the new version
+        config = function()
+            require("venv-selector").setup()
+        end,
+        keys = {
+            { ",v", "<cmd>VenvSelect<cr>" },
+        },
+    },
     {
         "L3MON4D3/LuaSnip",
         config = function()
@@ -13,10 +47,6 @@ return {
 
             require("luasnip.loaders.from_vscode").lazy_load { paths = { vim.fn.stdpath "config" .. "/snippets/vscode" } }
         end,
-    },
-    {
-        'nvim-telescope/telescope.nvim',
-        enabled = false
     },
     {
         "folke/snacks.nvim",
