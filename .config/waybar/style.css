@@ -33,6 +33,11 @@ button:hover {
   background-color: @surface2;
 }
 
+#workspaces {
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
 #workspaces button {
   padding: 0 5px;
   background-color: transparent;
@@ -121,13 +126,13 @@ button:hover {
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
+  background-color: @red;
   color: #ffffff;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: steps(12);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  /*animation-name: blink;*/
+  /*animation-duration: 0.5s;*/
+  /*animation-timing-function: steps(12);*/
+  /*animation-iteration-count: infinite;*/
+  /*animation-direction: alternate;*/
 }
 
 label:focus {
