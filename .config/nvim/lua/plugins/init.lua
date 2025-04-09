@@ -1,23 +1,99 @@
 return {
-    -- lazy.nvim
+    {
+        "saghen/blink.cmp",
+        dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+        version = "1.*",
+        enabled = false,
+        event = { "InsertEnter", "CmdlineEnter" },
+
+        ---@module 'blink.cmp'
+        ---@type blink.cmp.Config
+        opts = {
+            keymap = {
+                preset = 'enter'
+            },
+
+            appearance = {
+                nerd_font_variant = "mono",
+            },
+
+            completion = {
+                accept = { auto_brackets = { enabled = true } },
+                list = {
+                    max_items = 20,
+                    selection = {
+                        auto_insert = false,
+                    },
+                },
+                menu = {
+                    border = "rounded",
+                    draw = {
+                        columns = {
+                            { "label", "label_description", gap = 1 },
+                            { "kind" },
+                        },
+                        treesitter = { "lsp" },
+                    },
+                },
+                documentation = {
+                    auto_show = true,
+                }
+            },
+
+            -- signature = {
+            --     enabled = true,
+            --     window = { border = "rounded" },
+            -- },
+            snippets = { preset = 'luasnip' },
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer" },
+                -- providers = {
+                --     lsp = {
+                --         min_keyword_length = 2, -- Number of characters to trigger provider
+                --         score_offset = 0,       -- Boost/penalize the score of the items
+                --     },
+                --     path = {
+                --         min_keyword_length = 0,
+                --     },
+                --     snippets = {
+                --         min_keyword_length = 2,
+                --     },
+                --     buffer = {
+                --         min_keyword_length = 4,
+                --         max_items = 5,
+                --     },
+                -- },
+            },
+
+            fuzzy = {
+                implementation = "prefer_rust_with_warning"
+            },
+        },
+    },
+    -- { 'hrsh7th/nvim-cmp', enabled = false }, -- lazy.nvim
+    {
+        "olrtg/nvim-emmet",
+        ft = { "html", "css", "javascript", "jsx", "typescript", "tsx", "vue" },
+        config = function()
+            vim.keymap.set({ "n", "v" }, "<C-m><C-w>", require("nvim-emmet").wrap_with_abbreviation)
+        end,
+    },
     {
         "olimorris/codecompanion.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
         },
-        config = function()
-            require("codecompanion").setup({
-                strategies = {
-                    chat = {
-                        adapter = "copilot",
-                    },
-                    inline = {
-                        adapter = "copilot",
-                    },
+        opts = {
+            strategies = {
+                chat = {
+                    adapter = "copilot",
                 },
-            })
-        end
+                inline = {
+                    adapter = "copilot",
+                },
+            },
+        }
     },
     {
         "linux-cultist/venv-selector.nvim",
@@ -28,12 +104,10 @@ return {
         },
         lazy = true,
         branch = "regexp", -- This is the regexp branch, use this for the new version
-        config = function()
-            require("venv-selector").setup()
-        end,
         keys = {
             { ",v", "<cmd>VenvSelect<cr>" },
         },
+        opts = {}
     },
     {
         "L3MON4D3/LuaSnip",
@@ -64,6 +138,18 @@ return {
             },
             bigfile = { enabled = true },
             quickfile = { enabled = true },
+            zen = {
+                win = {
+                    backdrop = {
+                        transparent = false,
+                    },
+                    -- style = "zen",
+                    width = 96,
+                },
+                toggles = {
+                    dim = false,
+                },
+            },
         },
         keys = {
             -- Top Pickers & Explorer
@@ -71,6 +157,7 @@ return {
             { "<C-p>",           function() Snacks.picker.files() end,   desc = "Smart Find Files" },
             { "<leader>,",       function() Snacks.picker.buffers() end, desc = "Buffers" },
             { "<leader>fg",      function() Snacks.picker.grep() end,    desc = "Grep" },
+            { "<leader>z",       function() Snacks.zen() end,            desc = "Zen mode" },
         },
         init = function()
             vim.api.nvim_create_autocmd("User", {

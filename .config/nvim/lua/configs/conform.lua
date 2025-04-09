@@ -10,7 +10,6 @@ local options = {
         typescriptreact = { "prettier" },
         -- python = { "isort", "black" }, -- deprecate in favor of ruff
     },
-
     formatters = {
         -- -- C & C++
         ["clang-format"] = {
@@ -53,9 +52,9 @@ local options = {
         -- },
     },
 
+    async = true,
     format_on_save = {
-        -- These options will be passed to conform.format()
-        timeout_ms = 500,
+        timeout_ms = 2500,
         lsp_fallback = true,
     },
 }
