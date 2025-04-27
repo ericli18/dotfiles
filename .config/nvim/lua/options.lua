@@ -1,33 +1,67 @@
-require "nvchad.options"
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.diagnostic.config {
 
--- add yours here!
---
-vim.g.vscode_snippets_path = vim.fn.stdpath("config") .. "/snippets/vscode"
+  virtual_lines = {
+    current_line = true,
+  },
+}
+vim.g.have_nerd_font = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.mouse = 'a'
 
-local opt = vim.o
-opt.linebreak = true      -- Wrap lines at convenient points
-opt.list = true           -- Show some invisible characters (tabs...
-opt.mouse = "a"           -- Enable mouse mode
+-- Don't show the mode, since it's already in the status line
+vim.opt.showmode = false
+-- Sync clipboard between OS and Neovim.
+--  Schedule the setting after `UiEnter` because it can increase startup-time.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.schedule(function()
+  vim.opt.clipboard = 'unnamedplus'
+end)
 
-opt.relativenumber = true -- Relative line numbers
+-- Enable break indent
+vim.opt.breakindent = true
 
-opt.smartcase = true      -- Don't ignore case with capitals
-opt.smartindent = true    -- Insert indents automatically
+-- Save undo history
+vim.opt.undofile = true
 
-opt.termguicolors = true  -- True color support
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
-opt.shiftwidth = 0
-opt.tabstop = 4
-local function augroup(name)
-    return vim.api.nvim_create_augroup("nvim_" .. name, { clear = true })
-end
+-- Keep signcolumn on by default
+vim.opt.signcolumn = 'yes'
 
-vim.api.nvim_create_autocmd("TextYankPost", {
-    group = augroup("highlight_yank"),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
+-- Decrease update time
+-- vim.opt.updatetime = 250
+
+-- Decrease mapped sequence wait time
+vim.opt.timeoutlen = 300
+
+-- Configure how new splits should be opened
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+-- Sets how neovim will display certain whitespace characters in the editor.
+--  See `:help 'list'`
+--  and `:help 'listchars'`
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
+vim.opt.scrolloff = 10
+vim.opt.confirm = true
+
+vim.opt.smartindent = true
+vim.opt.shiftwidth = 0
+vim.opt.tabstop = 4
 
 if vim.g.neovide then
     vim.o.guifont = "jetbrains mono:h15"
