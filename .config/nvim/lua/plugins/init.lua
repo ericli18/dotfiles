@@ -1,5 +1,21 @@
 return {
     {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        lazy = false,
+        opts = {},
+    }, -- lazy.nvim
+    {
+        "m4xshen/hardtime.nvim",
+        enabled = false,
+        event = { "InsertEnter", "CmdlineEnter" },
+        dependencies = { "MunifTanjim/nui.nvim" },
+        opts = {}
+    },
+    {
         "saghen/blink.cmp",
         dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
         version = "1.*",
@@ -87,7 +103,7 @@ return {
         opts = {
             strategies = {
                 chat = {
-                    adapter = "copilot",
+                    adapter = "gemini",
                 },
                 inline = {
                     adapter = "copilot",
@@ -206,6 +222,7 @@ return {
     },
     {
         'xeluxee/competitest.nvim',
+        event = { 'VeryLazy' },
         dependencies = 'MunifTanjim/nui.nvim',
         config = function()
             require('competitest').setup {

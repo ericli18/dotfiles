@@ -30,21 +30,21 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 if vim.g.neovide then
-    vim.o.guifont = "JetBrains Mono:h15"
+    vim.o.guifont = "jetbrains mono:h15"
     vim.g.neovide_scale_factor = 1.0
     local change_scale_factor = function(delta)
         vim.g.neovide_scale_factor = vim.g.neovide_scale_factor * delta
     end
-    vim.keymap.set("n", "<C-=>", function()
+    vim.keymap.set("n", "<c-=>", function()
         change_scale_factor(1.25)
     end)
-    vim.keymap.set("n", "<C-->", function()
+    vim.keymap.set("n", "<c-->", function()
         change_scale_factor(1 / 1.25)
     end)
 
     vim.g.neovide_cursor_trail_size = 0.8
-    vim.keymap.set({ "n", "x" }, "<C-S-C>", '"+y', { desc = "Copy system clipboard" })
-    vim.keymap.set({ "n", "x" }, "<C-S-V>", '"+p', { desc = "Paste system clipboard" })
+    vim.keymap.set({ "n", "x" }, "<c-s-c>", '"+y', { desc = "copy system clipboard" })
+    vim.keymap.set({ "n", "x" }, "<c-s-v>", '"+p', { desc = "paste system clipboard" })
     vim.g.neovide_scroll_animation_length = 0.2
     vim.g.neovide_cursor_trail_size = 0.5
     vim.g.neovide_cursor_animation_length = 0.05
