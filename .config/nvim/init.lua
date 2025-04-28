@@ -368,6 +368,7 @@ require('lazy').setup({
             },
           },
         },
+        cssls = {},
         clangd = {},
         hls = {},
         ruff = {},
@@ -457,6 +458,7 @@ require('lazy').setup({
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        css = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -481,14 +483,12 @@ require('lazy').setup({
         dependencies = {},
 
         config = function()
+          local ls = require 'luasnip'
 
-            local ls = require "luasnip"
+          ls.filetype_extend('javascriptreact', { 'html' })
+          ls.filetype_extend('typescriptreact', { 'html' })
 
-            ls.filetype_extend("javascriptreact", { "html" })
-            ls.filetype_extend("typescriptreact", { "html" })
-
- 
-            require("luasnip.loaders.from_vscode").lazy_load { paths = { vim.fn.stdpath "config" .. "/snippets/vscode" } }
+          require('luasnip.loaders.from_vscode').lazy_load { paths = { vim.fn.stdpath 'config' .. '/snippets/vscode' } }
         end,
       },
       'folke/lazydev.nvim',
@@ -545,7 +545,6 @@ require('lazy').setup({
     },
   },
 
-
   -- Highlight todo, notes, etc in comments
   { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
@@ -565,7 +564,15 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require('mini.surround').setup {
+        mappings = {
+          add = 'gsa',
+          delete = 'gsd',
+          find = 'gsf',
+          find_left = 'gsF',
+          replace = 'gsr',
+        },
+      }
 
       require('mini.files').setup {
         mappings = {
