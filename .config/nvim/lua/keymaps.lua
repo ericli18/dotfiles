@@ -31,8 +31,8 @@ map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev Search Result
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
--- increment/decrement numbers
-map('n', '<leader>+', '<C-a>', { desc = 'Increment number' }) -- increment
-map('n', '<leader>-', '<C-x>', { desc = 'Decrement number' }) -- decrement
-
-map('n', '<leader>qq', '<cmd>qa<cr>', { desc = 'Quit All' })
+map('x', '<leader>p', '"_dP', {
+  noremap = true,
+  silent = true,
+  desc = 'Paste over selection without overwriting registers',
+})

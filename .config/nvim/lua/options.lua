@@ -11,7 +11,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
 vim.opt.swapfile = false
-
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
@@ -61,8 +60,32 @@ vim.opt.scrolloff = 10
 vim.opt.confirm = true
 
 vim.opt.smartindent = true
-vim.opt.shiftwidth = 0
+vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.expandtab = true
+
+-- global statusline
+vim.o.laststatus = 3
+
+-- Folding options
+vim.opt.fillchars = { fold = " " }
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = false
+vim.opt.foldlevel = 99
+-- g.markdown_folding = 1
+
+vim.opt.foldnestmax = 3
+vim.opt.foldlevelstart = 99
+
+local function close_all_folds()
+  vim.api.nvim_exec2("%foldc!", { output = false })
+end
+local function open_all_folds()
+  vim.api.nvim_exec2("%foldo!", { output = false })
+end
+
+vim.keymap.set("n", "<leader>zs", close_all_folds, { desc = "[s]hut all folds" })
+vim.keymap.set("n", "<leader>zo", open_all_folds, { desc = "[o]pen all folds" })
 
 if vim.g.neovide then
     vim.o.guifont = "jetbrains mono:h15"
