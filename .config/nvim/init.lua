@@ -118,7 +118,7 @@ require('lazy').setup({
       styles = {
         zen = {
           backdrop = { transparent = false },
-          width = 100
+          width = 100,
         },
       },
     },
@@ -363,6 +363,13 @@ require('lazy').setup({
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         basedpyright = {
+          capabilities = {
+            workspace = {
+              didChangeWatchedFiles = {
+                dynamicRegistration = true,
+              },
+            },
+          },
           settings = {
             disableLanguageServices = false,
             disableOrganizeImports = true,
@@ -399,8 +406,8 @@ require('lazy').setup({
           },
         },
         harper_ls = {
-          filetypes = {'markdown', 'html', 'typst'}
-        }
+          filetypes = { 'markdown', 'html', 'typst' },
+        },
       }
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
