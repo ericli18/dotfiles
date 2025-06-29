@@ -41,7 +41,7 @@ return {
       }
     end,
     init = function()
-      require('custom.plugins.ai.fidget'):init()
+      require('plugins.ai.fidget'):init()
     end,
   },
 }

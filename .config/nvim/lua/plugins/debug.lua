@@ -1,0 +1,118 @@
+return {
+  'mfussenegger/nvim-dap',
+  dependencies = {
+    {
+      'igorlfs/nvim-dap-view',
+      opts = {
+        winbar = {
+          sections = { 'watches', 'scopes', 'breakpoints', 'threads', 'exceptions', 'repl', 'console' },
+          default_section = 'scopes',
+        },
+        windows = { height = 18 },
+        -- When jumping through the call stack, try to switch to the buffer if already open in
+        -- a window, else use the last window to open the buffer.
+        switchbuf = 'usetab,uselast',
+      },
+    },
+    'williamboman/mason.nvim',
+    'jay-babu/mason-nvim-dap.nvim',
+
+    'mfussenegger/nvim-dap-python',
+  },
+  keys = {
+    -- Basic debugging keymaps, feel free to change to your liking!
+    {
+      '<leader>td',
+      function()
+        require('dap-view').toggle()
+      end,
+      desc = '[T]oggle [D]ebug',
+    },
+    {
+      '<leader>ds',
+      function()
+        require('dap').continue()
+      end,
+      desc = '[D]ebug: [S]tart/Continue',
+    },
+    {
+      '<leader>di',
+      function()
+        require('dap').step_into()
+      end,
+      desc = '[D]ebug: Step [I]nto',
+    },
+    {
+      '<leader>do',
+      function()
+        require('dap').step_over()
+      end,
+      desc = '[D]ebug: Step [O]ver',
+    },
+    {
+      '<leader>du',
+      function()
+        require('dap').step_out()
+      end,
+      desc = 'Debug: Step O[u]t',
+    },
+    {
+      '<leader>db',
+      function()
+        require('dap').toggle_breakpoint()
+      end,
+      desc = '[D]ebug: Toggle [B]reakpoint',
+    },
+    {
+      '<leader>dc',
+      function()
+        require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+      end,
+      desc = '[D]ebug: Set Breakpoint [C]ondition',
+    },
+  },
+  config = function()
+    local dap = require 'dap'
+    local dv = require 'dap-view'
+
+    require('mason-nvim-dap').setup {
+      automatic_installation = true,
+      -- You can provide additional configuration to the handlers,
+      -- see mason-nvim-dap README for more information
+      handlers = {},
+
+      ensure_installed = {
+        -- Update this to ensure that you have the debuggers for the langs you want
+        'debugpy',
+      },
+    }
+
+    -- Change breakpoint icons
+    vim.api.nvim_set_hl(0, 'DapBreak', { fg = '#e51400' })
+    vim.api.nvim_set_hl(0, 'DapStop', { fg = '#ffcc00' })
+    local breakpoint_icons = vim.g.have_nerd_font
+        and { Breakpoint = '', BreakpointCondition = '', BreakpointRejected = '', LogPoint = '', Stopped = '' }
+      or { Breakpoint = '●', BreakpointCondition = '⊜', BreakpointRejected = '⊘', LogPoint = '◆', Stopped = '⭔' }
+    for type, icon in pairs(breakpoint_icons) do
+      local tp = 'Dap' .. type
+      local hl = (type == 'Stopped') and 'DapStop' or 'DapBreak'
+      vim.fn.sign_define(tp, { text = icon, texthl = hl, numhl = hl })
+    end
+
+    dap.listeners.before.attach['dap-view-config'] = function()
+      dv.open()
+    end
+    dap.listeners.before.launch['dap-view-config'] = function()
+      dv.open()
+    end
+    dap.listeners.before.event_terminated['dap-view-config'] = function()
+      dv.close()
+    end
+    dap.listeners.before.event_exited['dap-view-config'] = function()
+      dv.close()
+    end
+
+    -- Install language specific config
+    require('dap-python').setup 'uv'
+  end,
+}
