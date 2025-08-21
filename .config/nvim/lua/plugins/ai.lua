@@ -4,6 +4,7 @@ return {
     'olimorris/codecompanion.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
+      'j-hui/fidget.nvim',
     },
     cmd = 'CodeCompanion',
     keys = {
@@ -15,6 +16,8 @@ return {
 
       local diff_opts = config.display.diff.opts
       table.insert(diff_opts, 'context:99') -- Setting the context to a very large number disables folding.
+
+      require('plugins.ai.fidget'):init()
 
       return {
         strategies = {
@@ -39,9 +42,6 @@ return {
           diff = { opts = diff_opts },
         },
       }
-    end,
-    init = function()
-      require('plugins.ai.fidget'):init()
     end,
   },
 }

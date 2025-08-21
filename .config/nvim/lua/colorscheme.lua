@@ -12,24 +12,25 @@ return
 --     vim.cmd.colorscheme 'everforest'
 --   end,
 -- }
--- {
---   'folke/tokyonight.nvim',
---   -- priority = 900,
---   config = function()
---     require('tokyonight').setup {
---       styles = {
---         comments = { italic = false },
---       },
---     }
---   end,
--- },
 {
-  'bluz71/vim-moonfly-colors',
-  priority = 1000,
+  'folke/tokyonight.nvim',
+  -- priority = 900,
   config = function()
-    vim.cmd.colorscheme 'moonfly'
+    require('tokyonight').setup {
+      styles = {
+        comments = { italic = false },
+      },
+    }
+    vim.cmd.colorscheme 'tokyonight'
   end,
 }
+-- {
+--   'bluz71/vim-moonfly-colors',
+--   priority = 1000,
+--   config = function()
+--     vim.cmd.colorscheme 'moonfly'
+--   end,
+-- }
 -- {
 --   'miikanissi/modus-themes.nvim',
 --   priority = 1000,

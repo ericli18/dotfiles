@@ -82,6 +82,9 @@ return {
           score_offset = 85,
         },
       },
+      per_filetype = {
+        codecompanion = { 'codecompanion', 'buffer' },
+      },
     },
 
     snippets = { preset = 'luasnip' },

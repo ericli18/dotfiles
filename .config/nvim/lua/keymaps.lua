@@ -31,8 +31,12 @@ map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev Search Result
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
-map('x', '<leader>p', '"_dP', {
-  noremap = true,
-  silent = true,
-  desc = 'Paste over selection without overwriting registers',
-})
+
+map("x", "<leader>p", [["_dP]])
+
+-- -- next greatest remap ever : asbjornHaland
+-- map({ "n", "v" }, "<leader>y", [["+y]])
+-- map("n", "<leader>Y", [["+Y]])
+--
+map({ "n", "v" }, "<leader>d", "\"_d")
+

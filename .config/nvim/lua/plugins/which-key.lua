@@ -44,6 +44,7 @@ return {
       { '<leader>l', group = '[L]og' },
       { '<leader>a', group = '[A]i' },
       { '<leader>d', group = '[D]ebug' },
+      { '<leader>g', group = '[G]it' },
     },
   },
 }
