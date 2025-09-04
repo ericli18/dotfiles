@@ -20,7 +20,6 @@ return {
     'mfussenegger/nvim-dap-python',
   },
   keys = {
-    -- Basic debugging keymaps, feel free to change to your liking!
     {
       '<leader>td',
       function()
@@ -84,6 +83,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'debugpy',
+        'codelldb',
       },
     }
 
@@ -114,5 +114,14 @@ return {
 
     -- Install language specific config
     require('dap-python').setup 'uv'
+
+    dap.adapters.codelldb = {
+      type = 'server',
+      port = '${port}',
+      executable = {
+        command = 'codelldb',
+        args = { '--port', '${port}' },
+      },
+    }
   end,
 }

@@ -1,4 +1,10 @@
-return
+return {
+  'savq/melange-nvim',
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme 'melange'
+  end,
+}
 --   {
 --   'sainnhe/everforest',
 --   lazy = false,
@@ -12,18 +18,18 @@ return
 --     vim.cmd.colorscheme 'everforest'
 --   end,
 -- }
-{
-  'folke/tokyonight.nvim',
-  -- priority = 900,
-  config = function()
-    require('tokyonight').setup {
-      styles = {
-        comments = { italic = false },
-      },
-    }
-    vim.cmd.colorscheme 'tokyonight'
-  end,
-}
+-- {
+--   'folke/tokyonight.nvim',
+--   -- priority = 900,
+--   config = function()
+--     require('tokyonight').setup {
+--       styles = {
+--         comments = { italic = false },
+--       },
+--     }
+--     vim.cmd.colorscheme 'tokyonight'
+--   end,
+-- }
 -- {
 --   'bluz71/vim-moonfly-colors',
 --   priority = 1000,

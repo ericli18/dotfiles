@@ -18,14 +18,4 @@ return {
       { '<leader>gnh', '<cmd>Gitsigns next_hunk<cr>', desc = '[G]it [N]ext [H]unk' },
     },
   },
-  {
-    'NeogitOrg/neogit',
-    opts = {
-      graph_style = 'unicode',
-      kind = "auto",
-    },
-    keys = {
-      { '<leader>gg', '<cmd>Neogit<cr>', desc = '[G]it [N]eogit' },
-    }
-  },
 }
