@@ -18,7 +18,7 @@ return {
 
         map('g.', vim.lsp.buf.code_action, '[G]oto code actions', { 'n', 'x' })
 
-        map('gA', require('snacks').picker.lsp_references, '[G]oto [A]ll References')
+        map('gu', require('snacks').picker.lsp_references, '[G]oto [U]sages')
         map('gI', require('snacks').picker.lsp_implementations, '[G]oto [I]mplementation')
 
         map('gd', require('snacks').picker.lsp_definitions, '[G]oto [D]efinition')
