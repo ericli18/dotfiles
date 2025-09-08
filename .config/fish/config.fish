@@ -7,7 +7,6 @@ set -g hydro_color_pwd      brcyan
 set -g hydro_color_git      bryellow
 set -g hydro_color_start    brgreen
 set -g hydro_color_error    brred
-set -g hydro_color_prompt   brwhite
 set -g hydro_color_duration brmagenta
 set -g hydro_multiline true
 set -g hydro_fetch true
