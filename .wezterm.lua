@@ -9,7 +9,10 @@ end
 
 -- Spawn a fish shell in login mode
 config.default_prog = { "/usr/bin/fish", "-l" }
-config.color_scheme = "Gruvbox dark, hard (base16)"
+-- config.color_scheme = 'Modus Vivendi (Gogh)'
+config.color_scheme = 'Moonfly (Gogh)'
+-- config.color_scheme = 'Vs Code Dark+ (Gogh)'
+-- config.color_scheme = 'Everforest Dark Hard (Gogh)'
 -- config.color_scheme = 'Gruvbox Material (Gogh)'
 config.font_size = 15
 config.window_background_opacity = 1
