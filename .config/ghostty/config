@@ -1,0 +1,23 @@
+theme = Atom
+window-padding-x = 5
+window-padding-y = 5
+command = fish
+
+# Cursor styles
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+
+
+# Keybindings
+keybind = ctrl+q>s=new_split:down
+keybind = ctrl+q>v=new_split:right
+keybind = ctrl+q>f=toggle_split_zoom
+keybind = ctrl+q>q=close_surface
+
+# Moving around splits
+keybind = ctrl+q>h=goto_split:left
+keybind = ctrl+q>j=goto_split:down
+keybind = ctrl+q>k=goto_split:up
+keybind = ctrl+q>l=goto_split:right
