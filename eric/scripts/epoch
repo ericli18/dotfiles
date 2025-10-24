@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+if [[ -z "${1:-}" ]]
+then
+        date +'%s'
+else
+        date --date="@${1}"
+fi
+

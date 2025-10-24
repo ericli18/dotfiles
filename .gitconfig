@@ -6,7 +6,7 @@
 [color]
 	ui = auto
 [pull]
-	rebase = false
+	rebase = true
 [credential]
 	helper = "!f() { /home/ericli/.vscode-server/bin/384ff7382de624fb94dbaf6da11977bba1ecd427/node /tmp/vscode-remote-containers-644fe60f-9968-4a0f-aa0d-ca4cfaae2b20.js git-credential-helper $*; }; f"
 [safe]
