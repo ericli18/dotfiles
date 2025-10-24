@@ -1,0 +1,173 @@
+#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+
+check_tuned_adm() {
+  if ! command -v tuned-adm >/dev/null 2>&1; then
+    echo "Error: 'tuned-adm' command not found." >&2
+    echo "Please make sure the 'tuned' package is installed and in your PATH." >&2
+    exit 1
+  fi
+}
+
+# --- Core Functions ---
+
+##
+# Show the current active tuned profile
+##
+tune_status() {
+  tuned-adm active
+}
+
+##
+# List all available tuned profiles
+##
+tune_list() {
+  tuned-adm list
+}
+
+##
+# Deactivate the tuned service
+##
+tune_off() {
+  echo "Deactivating tuned service..."
+  sudo tuned-adm off
+  echo "Tuned service is off."
+  echo
+  tune_status
+}
+
+##
+# Set a specific tuned profile
+# Usage: tune_set <profile_name>
+##
+tune_set() {
+  local profile="$1"
+
+  if [[ -z "$profile" ]]; then
+    echo "Error: Profile name must be provided for 'set'." >&2
+    echo
+    help
+    exit 1
+  fi
+
+  echo "Setting tuned profile to: $profile"
+  # Setting a profile often requires root privileges
+  sudo tuned-adm profile "$profile"
+  echo "---"
+  tune_status
+}
+
+##
+# Apply the system-recommended profile
+##
+tune_recommend() {
+  local recommended_profile
+  recommended_profile=$(tuned-adm recommend)
+  
+  echo "System recommended profile is: $recommended_profile"
+  echo "Applying..."
+  tune_set "$recommended_profile"
+}
+
+# --- Shortcut Functions (Your Request) ---
+
+##
+# Set 'powersave' profile (shortcut for 'balanced-battery')
+##
+tune_battery() {
+  tune_set "powersave"
+}
+
+##
+# Set 'balanced' profile
+##
+tune_balanced() {
+  tune_set "balanced"
+}
+
+##
+# Set 'throughput-performance' profile
+##
+tune_performance() {
+  tune_set "throughput-performance"
+}
+
+##
+# Show the help message
+##
+help() {
+  cat << EOF
+Usage: $(basename "$0") [command]
+
+A simple wrapper for 'tuned-adm' to manage power/performance profiles.
+Note: Setting profiles usually requires 'sudo' privileges.
+
+Available commands:
+  status        Show the current active profile
+  list          List all available profiles
+  set <profile> Activate a specific profile by name
+  off           Deactivate the tuned service
+  recommend     Apply the system-recommended profile
+
+Shortcut commands:
+  battery       Set profile to 'powersave'
+  balanced      Set profile to 'balanced'
+  performance   Set profile to 'throughput-performance'
+
+  help          Show this help message
+EOF
+}
+
+# --- Main Logic ---
+
+# Check if tuned-adm exists before doing anything
+check_tuned_adm
+
+# No arguments provided, show status (different from wifi script, but often more useful)
+if [[ $# == 0 ]]; then
+  tune_status
+  exit 0
+fi
+
+# Main command dispatcher
+case "$1" in
+  status)
+    tune_status
+    ;;
+  list)
+    tune_list
+    ;;
+  off)
+    tune_off
+    ;;
+  recommend)
+    tune_recommend
+    ;;
+  set)
+    # Pass the 2nd script argument ($2) to the function
+    tune_set "${2:-}"
+    ;;
+
+  # --- Shortcuts ---
+  battery)
+    tune_battery
+    ;;
+  balanced)
+    tune_balanced
+    ;;
+  performance)
+    tune_performance
+    ;;
+
+  help)
+    help
+    ;;
+  *)
+    echo "Error: Unknown command '$1'" >&2
+    echo
+    help
+    exit 1
+    ;;
+esac
