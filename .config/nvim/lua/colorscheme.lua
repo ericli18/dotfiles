@@ -1,11 +1,11 @@
-return {
-  'savq/melange-nvim',
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme 'melange'
-  end,
-}
---   {
+-- return {
+--   'savq/melange-nvim',
+--   priority = 1000,
+--   config = function()
+--     vim.cmd.colorscheme 'melange'
+--   end,
+-- }
+-- return  {
 --   'sainnhe/everforest',
 --   lazy = false,
 --   priority = 1000,
@@ -30,17 +30,17 @@ return {
 --     vim.cmd.colorscheme 'tokyonight'
 --   end,
 -- }
--- {
+-- return{
 --   'bluz71/vim-moonfly-colors',
 --   priority = 1000,
 --   config = function()
 --     vim.cmd.colorscheme 'moonfly'
 --   end,
 -- }
--- {
---   'miikanissi/modus-themes.nvim',
---   priority = 1000,
---   config = function()
---     vim.cmd.colorscheme 'modus'
---   end,
--- }
+return {
+  'miikanissi/modus-themes.nvim',
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme 'modus'
+  end,
+}

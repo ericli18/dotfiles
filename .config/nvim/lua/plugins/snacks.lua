@@ -101,6 +101,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
       desc = '[S]earch by [G]rep',
     },
     {
+      '<C-g>',
+      function()
+        Snacks.picker.grep()
+      end,
+      desc = '[S]earch by [G]rep',
+    },
+    {
       '<leader>sd',
       function()
         Snacks.picker.diagnostics()

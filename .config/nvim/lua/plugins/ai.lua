@@ -15,7 +15,6 @@ return {
       local config = require('codecompanion.config').config
 
       local diff_opts = config.display.diff.opts
-      table.insert(diff_opts, 'context:99') -- Setting the context to a very large number disables folding.
 
       require('plugins.ai.fidget'):init()
 

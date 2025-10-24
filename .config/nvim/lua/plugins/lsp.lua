@@ -105,6 +105,7 @@ return {
       emmet_language_server = {},
       tailwindcss = {},
       jdtls = {},
+      texlab = {},
       lua_ls = {
         settings = {
           Lua = {
