@@ -2,12 +2,16 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+if type -q nvim
+    set -gx MANPAGER "nvim +Man!"
+end
 
-set -g hydro_color_pwd      brcyan
-set -g hydro_color_git      bryellow
-set -g hydro_color_start    brgreen
+set -g hydro_color_pwd      brblue
+set -g hydro_color_git      brmagenta
+set -g hydro_color_start    cyan
 set -g hydro_color_error    brred
-set -g hydro_color_duration brmagenta
+set -g hydro_color_duration bryellow
+set -g hydro_color_prompt   brgreen
 set -g hydro_multiline true
 set -g hydro_fetch true
 
@@ -67,15 +71,6 @@ function md
     end
 end
 
-function y
-    set tmp (mktemp -t "yazi-cwd.XXXXXX")
-    yazi $argv --cwd-file="$tmp"
-    if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-        builtin cd -- "$cwd"
-    end
-    rm -f -- "$tmp"
-end
-
 
 
 # Keep this at the end
@@ -84,8 +79,10 @@ source "$HOME/.cargo/env.fish"
 zoxide init fish | source
 set PATH "$HOME/.local/bin:$HOME/bin:$PATH"
 
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+fish_add_path "$HOME/eric/scripts"
+
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
