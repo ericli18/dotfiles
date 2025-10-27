@@ -1,6 +1,6 @@
 return {
   'saghen/blink.cmp',
-  event = 'VimEnter',
+  event = 'InsertEnter',
   version = '1.*',
   dependencies = {
     {
@@ -50,7 +50,7 @@ return {
       -- <c-k>: Toggle signature help
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      preset = 'enter',
+      preset = 'default',
     },
 
     appearance = {
@@ -72,15 +72,9 @@ return {
     },
 
     sources = {
-      default = { 'snippets', 'lsp', 'path', 'dadbod', 'lazydev' },
+      default = { 'snippets', 'lsp', 'path', 'lazydev' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-        dadbod = {
-          name = 'Dadbod',
-          module = 'vim_dadbod_completion.blink',
-          min_keyword_length = 2,
-          score_offset = 85,
-        },
       },
       per_filetype = {
         codecompanion = { 'codecompanion', 'buffer' },

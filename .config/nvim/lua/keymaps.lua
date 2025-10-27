@@ -1,11 +1,14 @@
 local map = vim.keymap.set
 
 map('n', '<leader>E', function()
-  MiniFiles.open()
+  require('mini.files').open()
 end, { desc = 'File Explorer ' })
 map('n', '<leader>e', function()
-  MiniFiles.open(vim.fn.expand '%:p:h', false)
+  require('mini.files').open(vim.fn.expand '%:p:h', false)
 end, { desc = 'Explorer: current file’s folder' })
+
+map({ 'n' }, '<leader>w', '<Cmd>update<CR>', { desc = '[W]rite the current buffer.' })
+map({ 'n' }, '<leader>Q', '<Cmd>:wqa<CR>', { desc = 'Quit all buffers and write.' })
 
 -- move lines up and down with J and K
 map('v', 'J', ":m '>+1<CR>gv=gv")
@@ -31,17 +34,16 @@ map('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev Search Result
 map('v', '<', '<gv')
 map('v', '>', '>gv')
 
-
-map("x", "<leader>p", [["_dP]])
+map('x', '<leader>p', [["_dP]])
 
 -- -- next greatest remap ever : asbjornHaland
 -- map({ "n", "v" }, "<leader>y", [["+y]])
 -- map("n", "<leader>Y", [["+Y]])
 --
-map({ "n", "v" }, "<leader>d", "\"_d")
+-- map({ 'n', 'v' }, '<leader>d', '"_d')
 
 -- better up/down
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ 'n', 'x' }, 'j', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
+map({ 'n', 'x' }, '<Down>', "v:count == 0 ? 'gj' : 'j'", { desc = 'Down', expr = true, silent = true })
+map({ 'n', 'x' }, 'k', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })
+map({ 'n', 'x' }, '<Up>', "v:count == 0 ? 'gk' : 'k'", { desc = 'Up', expr = true, silent = true })

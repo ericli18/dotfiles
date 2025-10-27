@@ -5,6 +5,7 @@ vim.g.maplocalleader = ' '
 require 'options'
 require 'autocmds'
 require 'keymaps'
+require 'lsp'
 require 'code'
 
 if vim.g.vscode then
@@ -27,5 +28,19 @@ require('lazy').setup({
 }, {
   ui = {
     icons = {},
+  },
+  performance = {
+    rtp = {
+      -- Stuff I don't use.
+      disabled_plugins = {
+        'gzip',
+        'netrwPlugin',
+        'rplugin',
+        'tarPlugin',
+        'tohtml',
+        'tutor',
+        'zipPlugin',
+      },
+    },
   },
 })

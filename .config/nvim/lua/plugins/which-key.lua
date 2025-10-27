@@ -3,9 +3,9 @@ return {
   event = 'VimEnter',
   opts = {
     delay = 250,
-    preset = 'helix',
+    preset = 'modern',
     icons = {
-      mappings = vim.g.have_nerd_font,
+      mappings = false,
       keys = vim.g.have_nerd_font and {} or {
         Up = '<Up> ',
         Down = '<Down> ',

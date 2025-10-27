@@ -23,6 +23,8 @@ config.default_workspace = "main"
 -- config.animation_fps = 1
 -- config.cursor_blink_ease_in = 'Constant'
 -- config.cursor_blink_ease_out = 'Constant'
+--
+-- config.enable_wayland = false
 
 -- Dim inactive panes
 config.inactive_pane_hsb = {
