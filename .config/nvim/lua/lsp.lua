@@ -249,7 +249,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   once = true,
   callback = function()
-    vim.lsp.enable { 'lua_ls', 'tailwindcss', 'astro', 'clangd' }
+    vim.lsp.enable { 'ty', 'ruff', 'lua_ls', 'tailwindcss', 'astro', 'clangd' }
   end,
 })
 
