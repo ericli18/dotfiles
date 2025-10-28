@@ -7,8 +7,10 @@ SETUVAR _fisher_jorgebucaran_2F_nvm_2E_fish_files:\x7e/\x2econfig/fish/functions
 SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_fzf_configure_bindings_help\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_extract_var_info\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_changed_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_preview_file\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_diff_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_report_file_type\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_directory\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_log\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_git_status\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_history\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_processes\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_search_variables\x2efish\x1e\x7e/\x2econfig/fish/functions/_fzf_wrapper\x2efish\x1e\x7e/\x2econfig/fish/functions/fzf_configure_bindings\x2efish\x1e\x7e/\x2econfig/fish/conf\x2ed/fzf\x2efish\x1e\x7e/\x2econfig/fish/completions/fzf_configure_bindings\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1epatrickf1/fzf\x2efish\x1ejorgebucaran/nvm\x2efish\x1ejorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
+SETUVAR _hydro_git_10070:main\u2022\x20
 SETUVAR _hydro_git_10443:main\u2022\x20
 SETUVAR _hydro_git_11538:main\u2022\x20
+SETUVAR _hydro_git_11743:main\u2022\x20
 SETUVAR _hydro_git_125713:main\x20
 SETUVAR _hydro_git_12789:frontend\x2ditems\u2022\x20
 SETUVAR _hydro_git_12896:frontend\x2ditems\u2022\x20
@@ -34,11 +36,9 @@ SETUVAR _hydro_git_23289:instructions\x20
 SETUVAR _hydro_git_24089:main\x20
 SETUVAR _hydro_git_3273:maven\u2022\x20
 SETUVAR _hydro_git_36314:main\u2022\x20
-SETUVAR _hydro_git_38129:main\u2022\x20
 SETUVAR _hydro_git_3891:main\u2022\x20
 SETUVAR _hydro_git_3947:vote\x2droute\x20
 SETUVAR _hydro_git_3999:master\x20
-SETUVAR _hydro_git_4128:master\x20
 SETUVAR _hydro_git_4459:admin\x2ddashboard\x20
 SETUVAR _hydro_git_45710:main\x20
 SETUVAR _hydro_git_45980:main\u2022\x20
@@ -56,6 +56,7 @@ SETUVAR _hydro_git_73542:admin\x2ddashboard\u2022\x20
 SETUVAR _hydro_git_74732:main\x20
 SETUVAR _hydro_git_7597:main\u2022\x20
 SETUVAR _hydro_git_82209:main\u2022\x20
+SETUVAR _hydro_git_8328:main\u2022\x20
 SETUVAR _hydro_git_89281:main\x20
 SETUVAR _hydro_git_90828:flag\x2drepo\x2dfeature\x20
 SETUVAR _hydro_git_91005:main\x20

@@ -99,3 +99,4 @@ fish_add_path "$HOME/eric/scripts"
 # end
 # <<< conda initialize <<<
 # ~/.local/bin/mise activate fish | source
+~/.local/bin/mise activate fish | source
