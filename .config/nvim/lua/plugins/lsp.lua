@@ -1,5 +1,8 @@
 return {
   'neovim/nvim-lspconfig',
+  dependencies = {
+    'j-hui/fidget.nvim',
+  },
 }
 -- return {
 --   'neovim/nvim-lspconfig',

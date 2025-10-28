@@ -1,10 +1,12 @@
-
 --- Autocmds ---
--- Treesitter
-vim.api.nvim_create_autocmd('FileType', {
-  pattern = { '<filetype>' },
-  callback = function() vim.treesitter.start() end,
-})
+-- -- Treesitter
+-- local function on_buf_win_enter(_args)
+--   if vim.bo.filetype ~= '' then
+--     vim.treesitter.start()
+--   end
+-- end
+--
+-- vim.api.nvim_create_autocmd('BufWinEnter', { pattern = '*', callback = on_buf_win_enter })
 -- 2) track explorer open/close so you can (for example) disable format-on-save
 local explorer_grp = vim.api.nvim_create_augroup('minifiles', { clear = true })
 vim.api.nvim_create_autocmd('User', {
