@@ -54,7 +54,7 @@ tune_set() {
 
   echo "Setting tuned profile to: $profile"
   # Setting a profile often requires root privileges
-  sudo tuned-adm profile "$profile"
+  tuned-adm profile "$profile"
   echo "---"
   tune_status
 }
