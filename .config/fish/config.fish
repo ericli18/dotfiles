@@ -2,11 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-if type -q nvim
-    set -gx MANPAGER "nvim +Man!"
-end
-
-set -g hydro_color_pwd      brblue
+set -g hydro_color_pwd      white
 set -g hydro_color_git      brmagenta
 set -g hydro_color_start    cyan
 set -g hydro_color_error    brred
@@ -81,22 +77,13 @@ set PATH "$HOME/.local/bin:$HOME/bin:$PATH"
 
 fish_add_path "$HOME/eric/scripts"
 
-# export BUN_INSTALL="$HOME/.bun"
-# export PATH="$BUN_INSTALL/bin:$PATH"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-# if status --is-interactive
-#     if test -f /home/ericli/miniconda3/bin/conda
-#         eval /home/ericli/miniconda3/bin/conda "shell.fish" hook $argv | source
-#     else
-#         if test -f "/home/ericli/miniconda3/etc/fish/conf.d/conda.fish"
-#             . "/home/ericli/miniconda3/etc/fish/conf.d/conda.fish"
-#         else
-#             set -x PATH /home/ericli/miniconda3/bin $PATH
-#         end
-#     end
+# function fish_prompt
+#     set_color normal
+#     echo -n (basename (pwd))
+#     echo -n ' '
+#     set_color green
+#     echo -n '$ '
+#     set_color normal
 # end
-# <<< conda initialize <<<
-# ~/.local/bin/mise activate fish | source
+
 ~/.local/bin/mise activate fish | source
