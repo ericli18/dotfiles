@@ -11,8 +11,7 @@ set -g hydro_color_prompt   brgreen
 set -g hydro_multiline true
 set -g hydro_fetch true
 
-set --universal nvm_default_version latest
-set -gx EDITOR vim
+set -gx EDITOR nvim
 
 set fish_greeting
 #fish_vi_key_bindings
@@ -34,9 +33,14 @@ function nd
 nohup neovide &>/dev/null &
 end
 
+function n
+    foot nvim . &>/dev/null &
+end
+
 function ff
     cd (tv dirs)
 end
+
 abbr -a ... ../..
 
 abbr -a de distrobox enter
@@ -44,14 +48,14 @@ abbr -a de distrobox enter
 #LSD Functions
 abbr -a l 'eza --icons --group-directories-first'
 function la
-    eza -A
+    eza -A --icons --group-directories-first
 end
 
 function ll
-    eza -al
+    eza -al --icons --group-directories-first
 end
 
-function md
+function mcd
     if test (count $argv) -ne 1
         echo "Usage: mcd <directory>"
         return 1
@@ -67,13 +71,21 @@ function md
     end
 end
 
+function tempe
+    # Create and move into a temporary directory
+    cd (mktemp -d)
 
+    if test (count $argv) -eq 1
+        command mkdir -p $argv[1]
+        cd $argv[1]
+    end
+end
 
 # Keep this at the end
 #starship init fish | source
 source "$HOME/.cargo/env.fish"
 zoxide init fish | source
-set PATH "$HOME/.local/bin:$HOME/bin:$PATH"
+fish_add_path "$HOME/.local/bin" "$HOME/bin"
 
 fish_add_path "$HOME/eric/scripts"
 
@@ -86,4 +98,4 @@ fish_add_path "$HOME/eric/scripts"
 #     set_color normal
 # end
 
-~/.local/bin/mise activate fish | source
+$HOME/.local/bin/mise activate fish | source
