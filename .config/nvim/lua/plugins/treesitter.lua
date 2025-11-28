@@ -34,7 +34,10 @@ return {
           return
         end
 
-        if not vim.tbl_contains(require('nvim-treesitter.config').get_installed 'parsers', language) then
+        local no_install = { 'latex' }
+
+        if not vim.tbl_contains(require('nvim-treesitter.config').get_installed 'parsers', language) and not vim.tbl_contains(no_install, language) then
+          -- attempt to start highlighter after installing missing language
           require('nvim-treesitter.install').install(language):await(function()
             treesitter_attach(buf, language)
           end)
