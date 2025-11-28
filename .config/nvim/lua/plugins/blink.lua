@@ -48,6 +48,10 @@ return {
       preset = 'default',
     },
 
+    cmdline = {
+      completion = { menu = { auto_show = true } },
+    },
+
     appearance = {
       nerd_font_variant = 'mono',
     },
@@ -55,7 +59,7 @@ return {
     completion = {
       -- By default, you may press `<c-space>` to show the documentation.
       -- Optionally, set `auto_show = true` to show the documentation after a delay.
-      documentation = { auto_show = true, auto_show_delay_ms = 500 },
+      documentation = { auto_show = true, auto_show_delay_ms = 300 },
       menu = {
         draw = {
           columns = {
@@ -67,7 +71,7 @@ return {
     },
 
     sources = {
-      default = { 'snippets', 'lsp', 'path', 'lazydev' },
+      default = { 'snippets', 'lsp', 'path', 'lazydev', 'omni', 'buffer' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
       },

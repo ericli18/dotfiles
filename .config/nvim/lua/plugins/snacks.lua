@@ -1,10 +1,8 @@
+---@module 'snacks'
 return { -- Fuzzy Finder (files, lsp, etc)
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  dependencies = {
-    { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-  },
   ---@type snacks.Config
   opts = {
     picker = {

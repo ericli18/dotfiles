@@ -37,7 +37,7 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       c = { 'clang-format' },
-      cpp = { 'clang-format' },
+      cpp = { 'clang-format --style=Microsoft' },
       haskell = { 'fourmolu', 'stylish-haskell' },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },

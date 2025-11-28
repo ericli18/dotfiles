@@ -1,7 +1,16 @@
 vim.g.loaded_netrw = 1
+vim.opt.termguicolors = true
 vim.g.loaded_netrwPlugin = 1
-vim.diagnostic.config {
+-- vim.o.background = 'light'
 
+-- Force .idl files to use webidl filetype for Ladybird browser development
+vim.filetype.add({
+  extension = {
+    idl = "webidl",
+  },
+})
+
+vim.diagnostic.config {
   virtual_lines = {
     current_line = true,
   },
@@ -105,8 +114,8 @@ if vim.g.neovide then
     vim.keymap.set({ "n", "x" }, "<c-s-v>", '"+p', { desc = "paste system clipboard" })
     vim.g.neovide_scroll_animation_length = 0.2
     vim.g.neovide_cursor_trail_size = 0.5
-    vim.g.neovide_cursor_animation_length = 0.05
-    vim.g.neovide_cursor_animate_in_insert_mode = true
+    vim.g.neovide_cursor_animation_length = 0.04
+    vim.g.neovide_cursor_animate_in_insert_mode = false
 
     vim.g.neovide_padding_top = 0
     vim.g.neovide_padding_bottom = 0

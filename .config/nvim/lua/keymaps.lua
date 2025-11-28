@@ -7,6 +7,9 @@ map('n', '<leader>e', function()
   require('mini.files').open(vim.fn.expand '%:p:h', false)
 end, { desc = 'Explorer: current file’s folder' })
 
+map("n", "gv", ":vsplit | lua vim.lsp.buf.definition()<CR>", { desc = '[G]oto definition in [V]ertical split' })
+
+
 map({ 'n' }, '<leader>w', '<Cmd>update<CR>', { desc = '[W]rite the current buffer.' })
 map({ 'n' }, '<leader>Q', '<Cmd>:wqa<CR>', { desc = 'Quit all buffers and write.' })
 
