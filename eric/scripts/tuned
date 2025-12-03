@@ -95,6 +95,13 @@ tune_performance() {
 }
 
 ##
+# Set 'balanced-battery' profile
+##
+tune_laptop() {
+  tune_set "balanced-battery"
+}
+
+##
 # Show the help message
 ##
 help() {
@@ -113,6 +120,7 @@ Available commands:
 
 Shortcut commands:
   battery       Set profile to 'powersave'
+  laptop        Set profile to 'balanced-battery'
   balanced      Set profile to 'balanced'
   performance   Set profile to 'throughput-performance'
 
@@ -125,13 +133,11 @@ EOF
 # Check if tuned-adm exists before doing anything
 check_tuned_adm
 
-# No arguments provided, show status (different from wifi script, but often more useful)
 if [[ $# == 0 ]]; then
   tune_status
   exit 0
 fi
 
-# Main command dispatcher
 case "$1" in
   status)
     tune_status
@@ -153,6 +159,9 @@ case "$1" in
   # --- Shortcuts ---
   battery)
     tune_battery
+    ;;
+  laptop)
+    tune_laptop
     ;;
   balanced)
     tune_balanced

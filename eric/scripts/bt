@@ -1,0 +1,223 @@
+#!/usr/bin/env bash
+set -e
+set -u
+set -o pipefail
+
+# --- Prerequisite Check ---
+
+##
+# Exits script with an error if required commands are missing
+##
+check_deps() {
+  if ! command -v bluetoothctl &> /dev/null; then
+    echo "Error: 'bluetoothctl' is not installed. This script requires BlueZ." >&2
+    exit 1
+  fi
+  if ! command -v timeout &> /dev/null; then
+    echo "Error: 'timeout' is not installed. This script requires coreutils." >&2
+    exit 1
+  fi
+}
+
+# --- Helper Functions ---
+
+##
+# Checks if the Bluetooth controller is powered on
+##
+is_bluetooth_enabled() {
+  # 'bluetoothctl show' prints controller info
+  # We grep for "Powered: yes" and use -q (quiet) to just get a success/fail exit code
+  if bluetoothctl show | grep -q "Powered: yes"; then
+    echo "true"
+  else
+    echo "false"
+  fi
+}
+
+##
+# Exits script with an error if the Bluetooth radio is off
+##
+make_sure_bluetooth_is_enabled() {
+  if [[ "$(is_bluetooth_enabled)" == 'false' ]]; then
+    echo "Error: Bluetooth is disabled. Use '$(basename "$0") on' to enable it." >&2
+    exit 1
+  fi
+}
+
+# --- Core Functions ---
+
+##
+# Show Bluetooth power status and connected devices
+##
+bluetooth_status() {
+  local radio_state
+  if [[ "$(is_bluetooth_enabled)" == "true" ]]; then
+    radio_state="enabled"
+  else
+    radio_state="disabled"
+  fi
+  echo "Bluetooth Radio: $radio_state"
+
+  if [[ "$radio_state" == "enabled" ]]; then
+    echo "Connected Devices:"
+    # 'bluetoothctl devices Connected' lists currently connected devices
+    # We pipe to cut to get just the name
+    bluetoothctl devices Connected | cut -d ' ' -f 3- || echo "  (No devices connected)"
+  fi
+}
+
+##
+# List available Bluetooth devices
+##
+bluetooth_list() {
+  echo "Scanning for Bluetooth devices for 10 seconds..."
+  # We use 'timeout' to run the 'scan on' command for 10s
+  # We grep for "Device" to filter the output
+  timeout 10s bluetoothctl scan on | grep "^Device" || echo "No new devices found."
+}
+
+##
+# Pair, trust, and connect to a Bluetooth device
+# Usage: bluetooth_connect <device_id>
+# <device_id> can be the MAC address (XX:XX:...) or the device Name
+##
+bluetooth_connect() {
+  local device_id="${1:-}"
+
+  if [[ -z "$device_id" ]]; then
+    echo "Error: Device ID (MAC or Name) must be provided for 'connect'." >&2
+    echo
+    help
+    exit 1
+  fi
+
+  echo "Attempting to pair, trust, and connect to: $device_id"
+  # We pipe a series of commands into bluetoothctl
+  (
+    echo "pair $device_id"
+    sleep 2 # Give time for pairing to process
+    echo "trust $device_id"
+    echo "connect $device_id"
+    sleep 3 # Give time for connection to establish
+    echo "quit"
+  ) | bluetoothctl
+}
+
+##
+# Disconnect from a Bluetooth device
+# Usage: bluetooth_disconnect <device_id>
+##
+bluetooth_disconnect() {
+  local device_id="${1:-}"
+
+  if [[ -z "$device_id" ]]; then
+    echo "Error: Device ID (MAC or Name) must be provided for 'disconnect'." >&2
+    echo
+    help
+    exit 1
+  fi
+
+  echo "Attempting to disconnect from: $device_id"
+  (
+    echo "disconnect $device_id"
+    echo "quit"
+  ) | bluetoothctl
+}
+
+##
+# Turn off the Bluetooth controller
+##
+bluetooth_off() {
+  # We pipe the 'power off' command into bluetoothctl
+  echo "power off" | bluetoothctl
+  echo "Bluetooth radio disabled."
+}
+
+##
+# Turn on the Bluetooth controller
+##
+bluetooth_on() {
+  # We pipe the 'power on' command into bluetoothctl
+  echo "power on" | bluetoothctl
+  echo "Bluetooth radio enabled."
+}
+
+##
+# Restart the Bluetooth controller (off, then on)
+##
+bluetooth_toggle() {
+  echo "Restarting Bluetooth radio..."
+  bluetooth_off
+  sleep 1
+  bluetooth_on
+}
+
+##
+# Show the help message
+##
+help() {
+  cat << EOF
+Usage: $(basename "$0") [command]
+
+A simple wrapper for common Bluetooth operations.
+Requires 'bluetoothctl' (from BlueZ) and 'timeout' (from coreutils).
+
+Available commands:
+  status         Show Bluetooth radio status and connected devices
+  list           Scan for available Bluetooth devices (for 10s)
+  connect <id>   Pair, trust, and connect to a device (by MAC or Name)
+  disconnect <id>
+                 Disconnect from a device (by MAC or Name)
+  off            Turn off the Bluetooth radio
+  on             Turn on the Bluetooth radio
+  toggle         Turn Bluetooth radio off, then on
+  help           Show this help message
+EOF
+}
+
+# --- Main Logic ---
+
+check_deps # Make sure our tools are installed
+
+# No arguments provided, show help
+if [[ $# == 0 ]]; then
+  help
+  exit 0
+fi
+
+# Main command dispatcher
+case "$1" in
+  status)
+    bluetooth_status
+    ;;
+  list)
+    make_sure_bluetooth_is_enabled
+    bluetooth_list
+    ;;
+  connect)
+    make_sure_bluetooth_is_enabled
+    bluetooth_connect "${2:-}"
+    ;;
+  disconnect)
+    make_sure_bluetooth_is_enabled
+    bluetooth_disconnect "${2:-}"
+    ;;
+  off)
+    bluetooth_off
+    ;;
+  on)
+    bluetooth_on
+    ;;
+  toggle)
+    bluetooth_toggle
+    ;;
+  help)
+    help
+    ;;
+  *)
+    echo "Error: Unknown command '$1'" >&2
+    echo
+    help
+    exit 1
+    ;;
+esac
