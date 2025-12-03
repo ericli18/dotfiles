@@ -8,7 +8,7 @@ font-size = 16
 cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
-
+cursor-invert-fg-bg = true
 
 
 # Keybindings
