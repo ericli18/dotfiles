@@ -87,21 +87,21 @@ local function on_attach(client, bufnr)
   end
 
   -- Document Highlight
-  if client:supports_method 'textDocument/documentHighlight' then
-    local under_cursor_highlights_group = vim.api.nvim_create_augroup('ericli/cursor_highlights', { clear = false })
-    vim.api.nvim_create_autocmd({ 'CursorHold', 'InsertLeave' }, {
-      group = under_cursor_highlights_group,
-      desc = 'Highlight references under the cursor',
-      buffer = bufnr,
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd({ 'CursorMoved', 'InsertEnter', 'BufLeave' }, {
-      group = under_cursor_highlights_group,
-      desc = 'Clear highlight references',
-      buffer = bufnr,
-      callback = vim.lsp.buf.clear_references,
-    })
-  end
+  -- if client:supports_method 'textDocument/documentHighlight' then
+  --   local under_cursor_highlights_group = vim.api.nvim_create_augroup('ericli/cursor_highlights', { clear = false })
+  --   vim.api.nvim_create_autocmd({ 'CursorHold', 'InsertLeave' }, {
+  --     group = under_cursor_highlights_group,
+  --     desc = 'Highlight references under the cursor',
+  --     buffer = bufnr,
+  --     callback = vim.lsp.buf.document_highlight,
+  --   })
+  --   vim.api.nvim_create_autocmd({ 'CursorMoved', 'InsertEnter', 'BufLeave' }, {
+  --     group = under_cursor_highlights_group,
+  --     desc = 'Clear highlight references',
+  --     buffer = bufnr,
+  --     callback = vim.lsp.buf.clear_references,
+  --   })
+  -- end
 
   -- Inlay Hints (using local config logic)
   if client:supports_method 'textDocument/inlayHint' then
@@ -250,7 +250,7 @@ vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   once = true,
   callback = function()
         -- disabled right now: ty
-    vim.lsp.enable { 'ruff', 'lua_ls', 'tailwindcss', 'astro', 'clangd', 'tsgo', 'html', 'cssls', 'json', 'gopls', 'pyrefly' }
+    vim.lsp.enable { 'ruff', 'lua_ls', 'tailwindcss', 'astro', 'clangd', 'tsgo', 'html', 'cssls', 'json', 'gopls', 'pyrefly', 'hls' }
   end,
 })
 
