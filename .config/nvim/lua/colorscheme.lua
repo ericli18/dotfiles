@@ -5,19 +5,19 @@
 --     vim.cmd.colorscheme 'melange'
 --   end,
 -- }
-return  {
-  'sainnhe/everforest',
-  lazy = false,
-  priority = 1000,
-  config = function()
-    vim.g.everforest_background = 'hard'
-    vim.g.everforest_enable_italic = 1
-    vim.g.everforest_better_performance = 1
-    vim.g.everforest_ui_contrast = 'high'
-    vim.g.everforest_diagnostic_virtual_text = 'colored'
-    vim.cmd.colorscheme 'everforest'
-  end,
-}
+-- return  {
+--   'sainnhe/everforest',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     vim.g.everforest_background = 'hard'
+--     vim.g.everforest_enable_italic = 1
+--     vim.g.everforest_better_performance = 1
+--     vim.g.everforest_ui_contrast = 'high'
+--     vim.g.everforest_diagnostic_virtual_text = 'colored'
+--     vim.cmd.colorscheme 'everforest'
+--   end,
+-- }
 --
 -- return {
 --   'catppuccin/nvim',
@@ -50,11 +50,11 @@ return  {
 -- }
 
 -- Using lazy.nvim
--- return {
---   'deparr/tairiki.nvim',
---   lazy = false,
---   priority = 1000, -- recommended if you use tairiki as your default theme
---   config = function()
---     vim.cmd.colorscheme 'tairiki-light'
---   end,
--- }
+return {
+  'deparr/tairiki.nvim',
+  lazy = false,
+  priority = 1000, -- recommended if you use tairiki as your default theme
+  config = function()
+    vim.cmd.colorscheme 'tairiki-light'
+  end,
+}

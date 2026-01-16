@@ -37,13 +37,18 @@ return {
     formatters_by_ft = {
       lua = { 'stylua' },
       c = { 'clang-format' },
-      cpp = { 'clang-format --style=Microsoft' },
+      cpp = { 'clang-format' },
       haskell = { 'fourmolu', 'stylish-haskell' },
       javascript = { 'prettierd', 'prettier', stop_after_first = true },
       typescript = { 'prettierd', 'prettier', stop_after_first = true },
       javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
       css = { 'prettierd', 'prettier', stop_after_first = true },
+    },
+    formatters = {
+      ['clang-format'] = {
+        prepend_args = { '--style=file' },
+      },
     },
   },
 }
