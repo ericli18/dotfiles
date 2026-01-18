@@ -27,13 +27,13 @@
 --     vim.cmd.colorscheme 'catppuccin-mocha'
 --   end,
 -- }
--- return {
---   'folke/tokyonight.nvim',
---   -- priority = 900,
---   config = function()
---     vim.cmd.colorscheme 'tokyonight'
---   end,
--- }
+return {
+  'folke/tokyonight.nvim',
+  -- priority = 900,
+  config = function()
+    vim.cmd.colorscheme 'tokyonight'
+  end,
+}
 -- return{
 --   'bluz71/vim-moonfly-colors',
 --   priority = 1000,
@@ -50,11 +50,11 @@
 -- }
 
 -- Using lazy.nvim
-return {
-  'deparr/tairiki.nvim',
-  lazy = false,
-  priority = 1000, -- recommended if you use tairiki as your default theme
-  config = function()
-    vim.cmd.colorscheme 'tairiki-light'
-  end,
-}
+-- return {
+--   'deparr/tairiki.nvim',
+--   lazy = false,
+--   priority = 1000, -- recommended if you use tairiki as your default theme
+--   config = function()
+--     vim.cmd.colorscheme 'tairiki-light'
+--   end,
+-- }
