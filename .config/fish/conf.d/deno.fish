@@ -1,1 +1,0 @@
-source "/home/ericli/.deno/env.fish"
