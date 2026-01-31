@@ -1,0 +1,14 @@
+{
+  "chevron-left": {
+    "scope": "typst",
+    "prefix": "c.l",
+    "body": ["chevron.l"],
+    "description": "chevron.l"
+  },
+  "chevron-right": {
+    "scope": "typst",
+    "prefix": "c.r",
+    "body": ["chevron.r"],
+    "description": "chevron.r"
+  }
+}

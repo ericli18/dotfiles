@@ -27,13 +27,13 @@
 --     vim.cmd.colorscheme 'catppuccin-mocha'
 --   end,
 -- }
-return {
-  'folke/tokyonight.nvim',
-  -- priority = 900,
-  config = function()
-    vim.cmd.colorscheme 'tokyonight'
-  end,
-}
+-- return {
+--   'folke/tokyonight.nvim',
+--   -- priority = 900,
+--   config = function()
+--     vim.cmd.colorscheme 'tokyonight'
+--   end,
+-- }
 -- return{
 --   'bluz71/vim-moonfly-colors',
 --   priority = 1000,
@@ -58,3 +58,18 @@ return {
 --     vim.cmd.colorscheme 'tairiki-light'
 --   end,
 -- }
+return  {
+  'sainnhe/gruvbox-material',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.g.gruvbox_material_foreground = 'hard'
+    vim.g.gruvbox_material_enable_italic = 1
+    vim.g.gruvbox_material_better_performance = 1
+    vim.g.gruvbox_material_ui_contrast = 'high'
+    vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+    vim.g.gruvbox_material_cursor = 'aqua'
+    vim.cmd.colorscheme 'gruvbox-material'
+  end,
+}
+

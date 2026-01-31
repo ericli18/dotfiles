@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.opt.termguicolors = true
 vim.g.loaded_netrwPlugin = 1
--- vim.o.background = 'light'
+vim.o.background = 'light'
 
 -- Force .idl files to use webidl filetype for Ladybird browser development
 vim.filetype.add({
@@ -97,6 +97,8 @@ end
 
 vim.keymap.set("n", "<leader>zs", close_all_folds, { desc = "[s]hut all folds" })
 vim.keymap.set("n", "<leader>zo", open_all_folds, { desc = "[o]pen all folds" })
+
+vim.cmd('highlight Cursor guifg=#000000 guibg=#00ff00')
 
 if vim.g.neovide then
     vim.o.guifont = "jetbrains mono:h15"
