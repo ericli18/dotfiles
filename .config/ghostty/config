@@ -1,14 +1,15 @@
-theme = Atom
+theme = Atom One Dark
+# theme = Gruvbox Light Hard
 window-padding-x = 5
 window-padding-y = 5
 command = fish
 font-size = 16
 
+
 # Cursor styles
 cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
-cursor-invert-fg-bg = true
 
 
 # Keybindings
