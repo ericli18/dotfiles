@@ -2,7 +2,7 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
-set -g hydro_color_pwd      white
+# set -g hydro_color_pwd      white
 set -g hydro_color_git      brmagenta
 set -g hydro_color_start    cyan
 set -g hydro_color_error    brred
@@ -28,6 +28,7 @@ abbr -a c clear
 abbr -a lg lazygit
 abbr -a nv nvim
 abbr -a dl gio trash
+abbr -a sss sudo systemctl suspend
 
 function nd 
 nohup neovide &>/dev/null &
@@ -39,6 +40,34 @@ end
 
 function ff
     cd (tv dirs)
+end
+
+function cpshot
+    set src_dir ~/Pictures/Screenshots
+
+    if not test -d $src_dir
+        echo "Screenshot directory not found: $src_dir"
+        return 1
+    end
+
+    if test (count $argv) -ne 1
+        echo "Usage: cpshot <new-name-without-extension>"
+        return 1
+    end
+
+    # Find most recent file
+    set latest (ls -t $src_dir | head -n 1)
+
+    if test -z "$latest"
+        echo "No files found in $src_dir"
+        return 1
+    end
+
+    set ext (string split -r -m1 . $latest)[2]
+    set dest "$argv[1].$ext"
+
+    cp "$src_dir/$latest" "$dest"
+    echo "Copied $latest → $dest"
 end
 
 abbr -a ... ../..
