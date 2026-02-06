@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.opt.termguicolors = true
 vim.g.loaded_netrwPlugin = 1
-vim.o.background = 'light'
+-- vim.o.background = 'light'
 
 -- Force .idl files to use webidl filetype for Ladybird browser development
 vim.filetype.add({

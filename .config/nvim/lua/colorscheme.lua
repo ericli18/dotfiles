@@ -50,26 +50,26 @@
 -- }
 
 -- Using lazy.nvim
--- return {
---   'deparr/tairiki.nvim',
---   lazy = false,
---   priority = 1000, -- recommended if you use tairiki as your default theme
---   config = function()
---     vim.cmd.colorscheme 'tairiki-light'
---   end,
--- }
-return  {
-  'sainnhe/gruvbox-material',
+return {
+  'deparr/tairiki.nvim',
   lazy = false,
-  priority = 1000,
+  priority = 1000, -- recommended if you use tairiki as your default theme
   config = function()
-    vim.g.gruvbox_material_foreground = 'hard'
-    vim.g.gruvbox_material_enable_italic = 1
-    vim.g.gruvbox_material_better_performance = 1
-    vim.g.gruvbox_material_ui_contrast = 'high'
-    vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
-    vim.g.gruvbox_material_cursor = 'aqua'
-    vim.cmd.colorscheme 'gruvbox-material'
+    vim.cmd.colorscheme 'tairiki'
   end,
 }
-
+-- return  {
+--   'sainnhe/gruvbox-material',
+--   lazy = false,
+--   priority = 1000,
+--   config = function()
+--     vim.g.gruvbox_material_foreground = 'hard'
+--     vim.g.gruvbox_material_enable_italic = 1
+--     vim.g.gruvbox_material_better_performance = 1
+--     vim.g.gruvbox_material_ui_contrast = 'high'
+--     vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+--     vim.g.gruvbox_material_cursor = 'aqua'
+--     vim.cmd.colorscheme 'gruvbox-material'
+--   end,
+-- }
+--
