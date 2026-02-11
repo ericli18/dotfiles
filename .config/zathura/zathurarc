@@ -4,6 +4,8 @@ set incremental-search true
 
 set scroll-step 150
 
+set database sqlite
+
 #catpuccin
 
 set default-fg                rgba(76,79,105,1)
