@@ -23,3 +23,9 @@ keybind = ctrl+q>h=goto_split:left
 keybind = ctrl+q>j=goto_split:down
 keybind = ctrl+q>k=goto_split:up
 keybind = ctrl+q>l=goto_split:right
+
+#goto tab
+keybind = ctrl+1=goto_tab:1
+keybind = ctrl+2=goto_tab:2
+keybind = ctrl+3=goto_tab:3
+keybind = ctrl+9=goto_tab:9
