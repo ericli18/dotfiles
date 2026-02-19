@@ -55,7 +55,7 @@ return {
   lazy = false,
   priority = 1000, -- recommended if you use tairiki as your default theme
   config = function()
-    vim.cmd.colorscheme 'tairiki'
+    vim.cmd.colorscheme 'tairiki-light'
   end,
 }
 -- return  {
@@ -73,3 +73,10 @@ return {
 --   end,
 -- }
 --
+-- return {
+--   "olimorris/onedarkpro.nvim",
+--   priority = 1000,
+--   config = function()
+--     vim.cmd.colorscheme 'onedark'
+--   end,
+-- }
