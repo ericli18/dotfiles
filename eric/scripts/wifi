@@ -64,7 +64,7 @@ wifi_join() {
 
   if [[ -z "$pass" ]]; then
     echo "Attempting to connect to open network: $ssid"
-    nmcli device wifi connect "$ssid"
+    nmcli device wifi connect --ask "$ssid"
   else
     echo "Attempting to connect to protected network: $ssid"
     nmcli device wifi connect "$ssid" password "$pass"

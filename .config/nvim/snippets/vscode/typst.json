@@ -10,5 +10,11 @@
     "prefix": "c.r",
     "body": ["chevron.r"],
     "description": "chevron.r"
+  },
+  "upright-bold": {
+    "scope": "typst",
+    "prefix": "ubold",
+    "body": ["upright(bold($1))"],
+    "description": "upright(bold(...))"
   }
 }
