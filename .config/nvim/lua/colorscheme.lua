@@ -50,14 +50,14 @@
 -- }
 
 -- Using lazy.nvim
-return {
-  'deparr/tairiki.nvim',
-  lazy = false,
-  priority = 1000, -- recommended if you use tairiki as your default theme
-  config = function()
-    vim.cmd.colorscheme 'tairiki'
-  end,
-}
+-- return {
+--   'deparr/tairiki.nvim',
+--   lazy = false,
+--   priority = 1000, -- recommended if you use tairiki as your default theme
+--   config = function()
+--     vim.cmd.colorscheme 'tairiki'
+--   end,
+-- }
 -- return  {
 --   'sainnhe/gruvbox-material',
 --   lazy = false,
@@ -80,3 +80,10 @@ return {
 --     vim.cmd.colorscheme 'onedark'
 --   end,
 -- }
+return {
+  'rebelot/kanagawa.nvim',
+  priority = 1000,
+  config = function()
+    vim.cmd.colorscheme 'kanagawa'
+  end,
+}

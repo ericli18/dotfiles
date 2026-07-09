@@ -46,6 +46,11 @@ return {
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
       preset = 'default',
+      ['<C-g>'] = {
+        function(cmp)
+          cmp.show { providers = { 'minuet' } }
+        end,
+      },
     },
 
     cmdline = {
@@ -57,6 +62,7 @@ return {
     },
 
     completion = {
+      trigger = { prefetch_on_insert = false },
       -- By default, you may press `<c-space>` to show the documentation.
       -- Optionally, set `auto_show = true` to show the documentation after a delay.
       documentation = { auto_show = true, auto_show_delay_ms = 300 },
@@ -74,9 +80,13 @@ return {
       default = { 'snippets', 'lsp', 'path', 'lazydev', 'buffer' },
       providers = {
         lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-      },
-      per_filetype = {
-        codecompanion = { 'codecompanion', 'buffer' },
+        minuet = {
+          name = 'minuet',
+          module = 'minuet.blink',
+          async = true,
+          timeout_ms = 3000,
+          score_offset = 100,
+        },
       },
     },
 
