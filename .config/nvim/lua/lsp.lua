@@ -2,8 +2,27 @@ local diagnostic_icons = require('icons').diagnostics
 
 local M = {}
 
--- Disable inlay hints initially (and enable if needed with my ToggleInlayHints command).
+-- Disable inlay hints initially (and enable if needed with <leader>th).
 vim.g.inlay_hints = false
+
+---@param enabled boolean
+local function set_inlay_hints(enabled)
+  vim.g.inlay_hints = enabled
+
+  local mode = vim.api.nvim_get_mode().mode
+  local visible = enabled and (mode == 'n' or mode == 'v')
+
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(bufnr) then
+      for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
+        if client:supports_method 'textDocument/inlayHint' then
+          vim.lsp.inlay_hint.enable(visible, { bufnr = bufnr })
+          break
+        end
+      end
+    end
+  end
+end
 
 --- Sets up LSP keymaps and autocommands for the given buffer.
 ---@param client vim.lsp.Client
@@ -107,6 +126,10 @@ local function on_attach(client, bufnr)
   if client:supports_method 'textDocument/inlayHint' then
     local inlay_hints_group = vim.api.nvim_create_augroup('toggle_inlay_hints', { clear = false })
 
+    keymap('<leader>th', function()
+      set_inlay_hints(not vim.g.inlay_hints)
+    end, '[T]oggle inlay [H]ints')
+
     if vim.g.inlay_hints then
       -- Initial inlay hint display.
       -- Idk why but without the delay inlay hints aren't displayed at the very start.
@@ -118,7 +141,7 @@ local function on_attach(client, bufnr)
 
     vim.api.nvim_create_autocmd('InsertEnter', {
       group = inlay_hints_group,
-      desc = 'Enable inlay hints',
+      desc = 'Hide inlay hints while inserting',
       buffer = bufnr,
       callback = function()
         if vim.g.inlay_hints then
@@ -129,7 +152,7 @@ local function on_attach(client, bufnr)
 
     vim.api.nvim_create_autocmd('InsertLeave', {
       group = inlay_hints_group,
-      desc = 'Disable inlay hints',
+      desc = 'Show inlay hints after inserting',
       buffer = bufnr,
       callback = function()
         if vim.g.inlay_hints then
@@ -249,7 +272,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 vim.api.nvim_create_autocmd({ 'BufReadPre', 'BufNewFile' }, {
   once = true,
   callback = function()
-    vim.lsp.enable { 'ruff', 'lua_ls', 'tailwindcss', 'astro', 'clangd', 'tsc', 'html', 'cssls', 'json', 'gopls', 'pyrefly', 'hls', 'ty', 'tinymist', 'gdscript', 'marksman', 'rust_analyzer' }
+    vim.lsp.enable { 'ruff', 'lua_ls', 'tailwindcss', 'astro', 'clangd', 'typescript', 'html', 'cssls', 'json', 'gopls', 'pyrefly', 'hls', 'ty', 'tinymist', 'gdscript', 'marksman', 'rust_analyzer', 'terraformls' }
   end,
 })
 

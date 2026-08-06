@@ -4,6 +4,7 @@ vim.g.maplocalleader = ' '
 
 require 'options'
 require 'autocmds'
+require 'commands'
 require 'keymaps'
 require 'lsp'
 require 'code'

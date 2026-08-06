@@ -28,7 +28,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     styles = {
       zen = {
         backdrop = { transparent = false },
-        width = 100,
+        width = 150,
       },
     },
   },

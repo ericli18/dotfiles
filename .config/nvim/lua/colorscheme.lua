@@ -58,20 +58,20 @@
 --     vim.cmd.colorscheme 'tairiki'
 --   end,
 -- }
--- return  {
---   'sainnhe/gruvbox-material',
---   lazy = false,
---   priority = 1000,
---   config = function()
---     vim.g.gruvbox_material_foreground = 'hard'
---     vim.g.gruvbox_material_enable_italic = 1
---     vim.g.gruvbox_material_better_performance = 1
---     vim.g.gruvbox_material_ui_contrast = 'high'
---     vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
---     vim.g.gruvbox_material_cursor = 'aqua'
---     vim.cmd.colorscheme 'gruvbox-material'
---   end,
--- }
+return  {
+  'sainnhe/gruvbox-material',
+  lazy = false,
+  priority = 1000,
+  config = function()
+    vim.g.gruvbox_material_foreground = 'hard'
+    vim.g.gruvbox_material_enable_italic = 1
+    vim.g.gruvbox_material_better_performance = 1
+    vim.g.gruvbox_material_ui_contrast = 'high'
+    vim.g.gruvbox_material_diagnostic_virtual_text = 'colored'
+    vim.g.gruvbox_material_cursor = 'aqua'
+    vim.cmd.colorscheme 'gruvbox-material'
+  end,
+}
 --
 -- return {
 --   "olimorris/onedarkpro.nvim",
@@ -80,10 +80,3 @@
 --     vim.cmd.colorscheme 'onedark'
 --   end,
 -- }
-return {
-  'rebelot/kanagawa.nvim',
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme 'kanagawa'
-  end,
-}
