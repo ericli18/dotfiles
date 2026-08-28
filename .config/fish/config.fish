@@ -84,6 +84,7 @@ function ll
     eza -al --icons --group-directories-first
 end
 
+# User scripts
 function mcd
     if test (count $argv) -ne 1
         echo "Usage: mcd <directory>"
@@ -110,21 +111,11 @@ function tempe
     end
 end
 
+fish_add_path "$HOME/eric/scripts"
+
 # Keep this at the end
 #starship init fish | source
 source "$HOME/.cargo/env.fish"
 zoxide init fish | source
 fish_add_path "$HOME/.local/bin" "$HOME/bin"
-
-fish_add_path "$HOME/eric/scripts"
-
-# function fish_prompt
-#     set_color normal
-#     echo -n (basename (pwd))
-#     echo -n ' '
-#     set_color green
-#     echo -n '$ '
-#     set_color normal
-# end
-
 $HOME/.local/bin/mise activate fish | source
