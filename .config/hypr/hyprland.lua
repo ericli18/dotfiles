@@ -28,10 +28,6 @@ exec_on_start("hyprpaper")
 exec_on_start("wl-paste --watch cliphist store")
 exec_on_start("hyprctl setcursor Posys-Cursor-Scalable-Black 22")
 
--- exec_on_start("ghostty", { workspace = "1" })
--- exec_on_start("firefox", { workspace = "2" })
--- exec_on_start("ticktick", { workspace = "4" })
-
 --------------
 -- Monitors
 --------------
@@ -94,9 +90,6 @@ hl.config({
 		inactive_opacity = 1.0,
 		blur = {
 			enabled = false,
-			size = 3,
-			passes = 1,
-			vibrancy = 0.1696,
 		},
 		shadow = {
 			enabled = false,
