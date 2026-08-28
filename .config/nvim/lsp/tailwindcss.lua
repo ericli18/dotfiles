@@ -68,6 +68,7 @@ return {
   },
   settings = {
     tailwindCSS = {
+      classFunctions = { 'tv' },
       validate = true,
       lint = {
         cssConflict = 'warning',
