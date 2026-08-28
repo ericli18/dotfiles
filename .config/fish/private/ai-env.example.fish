@@ -1,0 +1,1 @@
+set -gx CODESTRAL_API_KEY ""
