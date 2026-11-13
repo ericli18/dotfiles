@@ -34,9 +34,16 @@ exec_on_start("hyprctl setcursor Posys-Cursor-Scalable-Black 22")
 
 hl.monitor({
 	output = "eDP-1",
-	mode = "1920x1200",
+	mode = "preferred",
 	position = "0x0",
-	scale = 1.25,
+	scale = 2,
+})
+
+hl.monitor({
+	output = "DP-1",
+	mode = "preferred",
+	position = "auto-center-up",
+	scale = 1,
 })
 
 hl.monitor({
@@ -118,7 +125,7 @@ hl.config({
 		kb_layout = "us,cz",
 		kb_variant = ",qwerty",
 		kb_model = "",
-		kb_options = "grp:alt_space_toggle",
+		kb_options = "altwin:swap_alt_win,ctrl:nocaps",
 		kb_rules = "",
 		follow_mouse = 1,
 		mouse_refocus = false,
