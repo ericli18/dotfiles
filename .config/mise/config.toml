@@ -9,15 +9,16 @@
 "npm:typescript" = "latest"
 "npm:typescript-language-server" = "latest"
 "npm:vscode-langservers-extracted" = "latest"
-"pipx:pyrefly" = "latest"
-"pipx:ruff" = "latest"
-"pipx:scapy" = "latest"
-"pipx:ty" = "latest"
-node = "25"
+"pypi:pyrefly" = "latest"
+"pypi:ruff" = "latest"
+"pypi:ty" = "latest"
+uv = "latest"
+node = "lts"
 cabal = "latest"
 tinymist = "latest"
 marksman = "latest"
 biome = "latest"
+go = "latest"
 
 [settings]
 [settings.python]
