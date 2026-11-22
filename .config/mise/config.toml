@@ -1,0 +1,24 @@
+[tools]
+"aqua:JohnnyMorganz/StyLua" = "latest"
+"aqua:LuaLS/lua-language-server" = "latest"
+"go:golang.org/x/tools/gopls" = "latest"
+"npm:@astrojs/language-server" = "latest"
+"npm:@tailwindcss/language-server" = "latest"
+"npm:npm-check-updates" = "latest"
+"npm:prettier" = "latest"
+"npm:typescript" = "latest"
+"npm:typescript-language-server" = "latest"
+"npm:vscode-langservers-extracted" = "latest"
+"pipx:pyrefly" = "latest"
+"pipx:ruff" = "latest"
+"pipx:scapy" = "latest"
+"pipx:ty" = "latest"
+node = "25"
+cabal = "latest"
+tinymist = "latest"
+marksman = "latest"
+biome = "latest"
+
+[settings]
+[settings.python]
+uv_venv_auto = "source"
